@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>John Doe About</title>
+    <link rel="stylesheet" href="../CSS/aboutstyle.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="top-container">
+      <!-- Placeholder div where user information will dynamically be added -->
+      <div class="user-info-panel"></div>
+    </div>
+    <div class="bottom-container">
+      <div class="horizontal-container">
+        <div class="summary-panel">
+          <h1 class="panel-title">Summary</h1>
+          <p><!-- Summary will be dynamically inserted here --></p>
+      </div>
+        <div class="recommendations-panel">
+          <h1 class="panel-title">Recommendations</h1>
+          <div class="recommendation-content">
+            <!-- Recommendations get inserted here -->
+            <div class="recommendation-dots" id="recommendation-dots"></div>
+          </div>
+        </div>
+        <div class="skills-panel">
+          <h1 class="panel-title">Software Knowledge</h1>
+          <div class="software-tag-container">
+            <!-- Software tags will be dynamically inserted here -->
+          </div>
+          <h1 class="panel-title">Skills</h1>
+          <div class="software-tag-container">
+            <!-- Skills tags will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="productions-panel">
+      <h1 class="panel-title">Productions & Experience</h1>
+      <div class="productions-subpanels">
+        <!-- Production cards will be added here -->
+      </div>
+    </div>
+    <script src="../JS/summary.js"></script>
+    <script src="../JS/skills.js"></script>
+    <script src="../JS/userinformation.js"></script>
+    <script src="../JS/recommendations.js"></script>
+    <script src="../JS/productions.js"></script>
+  </body>
+</html>

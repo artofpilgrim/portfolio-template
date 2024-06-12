@@ -1,40 +1,3 @@
-// Array of production data
-const productionData = [
-  {
-    title: "Name of Production or Title", // The title you held
-    company: "Company Name", // the company you work(ed) for
-    time: "Time Spent or Current Position", // time you spent there or are still present
-    thumbnail: "https://files.facepunch.com/tom/1b/thumb3.jpg", // Replace with actual URL for production thumbnail
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. I bet you haven't read this. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. But if you did then you're weird, who does that? Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.",
-  },
-  {
-    title: "Name of Production or Title", // The title you held
-    company: "Company Name", // the company you work(ed) for
-    time: "Time Spent or Current Position", // time you spent there or are still present
-    thumbnail: "https://files.facepunch.com/tom/1b/thumb3.jpg", // Replace with actual URL for production thumbnail
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. I bet you haven't read this. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. But if you did then you're weird, who does that? Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.",
-  },
-  {
-    title: "Name of Production or Title", // The title you held
-    company: "Company Name", // the company you work(ed) for
-    time: "Time Spent or Current Position", // time you spent there or are still present
-    thumbnail: "https://files.facepunch.com/tom/1b/thumb3.jpg", // Replace with actual URL for production thumbnail
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. I bet you haven't read this. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. But if you did then you're weird, who does that? Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.",
-  },
-  {
-    title: "Name of Production or Title", // The title you held
-    company: "Company Name", // the company you work(ed) for
-    time: "Time Spent or Current Position", // time you spent there or are still present
-    thumbnail: "https://files.facepunch.com/tom/1b/thumb3.jpg", // Replace with actual URL for production thumbnail
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. I bet you haven't read this. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. But if you did then you're weird, who does that? Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.",
-  },
-  // Add more productions as needed
-];
-
 // Function to create a production card
 function createProductionCard(title, company, time, thumbnail, description) {
     const card = document.createElement("div");
@@ -79,14 +42,26 @@ function createProductionCard(title, company, time, thumbnail, description) {
     return card;
 }
 
-
-
-// Append cards to the productions panel on DOM content load
+// Fetch and append production cards on DOM content load
 document.addEventListener("DOMContentLoaded", () => {
-    const productionsContainer = document.querySelector(".productions-subpanels");
-    productionData.forEach(production => {
-        const card = createProductionCard(production.title, production.company, production.time, production.thumbnail, production.description);
-        productionsContainer.appendChild(card);
-    });
-});
+    fetch('../Config/productions.txt')
+        .then(response => response.text())
+        .then(text => {
+            const productions = text.split('---').map(prod => prod.trim()).filter(prod => prod);
+            const productionsContainer = document.querySelector(".productions-subpanels");
 
+            console.log("Processing productions...");
+
+            productions.forEach((prod, index) => {
+                const lines = prod.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));
+                console.log(`Production ${index}:`, lines); // Debugging log
+                if (lines.length === 5) {
+                    const card = createProductionCard(lines[0], lines[1], lines[2], lines[3], lines[4]);
+                    productionsContainer.appendChild(card);
+                } else {
+                    console.error('Invalid production data format:', lines);
+                }
+            });
+        })
+        .catch(error => console.error('Failed to load productions:', error));
+});

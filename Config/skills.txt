@@ -1,0 +1,10 @@
+3D Modelling
+Sculpting
+Texturing
+High Poly Modelling
+UV-Unwrapping
+Retopology
+Hand-painted Texturing
+Weapon Modelling
+Environment Art
+Tileable Materials

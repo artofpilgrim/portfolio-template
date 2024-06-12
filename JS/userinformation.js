@@ -8,7 +8,7 @@ function addUserInformation() {
 
     // Create and append the image
     const img = document.createElement("img");
-    img.src = "https://i.imgur.com/JvDhawP.png"; // Your Profile Pic URL
+    img.src = "https://files.facepunch.com/tom/1b/JvDhawP.png"; // Your Profile Pic URL
     img.alt = "Profile Picture";
     img.className = "profile-pic";
     userInfoPanel.appendChild(img);

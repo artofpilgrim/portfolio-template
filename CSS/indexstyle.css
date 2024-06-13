@@ -60,12 +60,39 @@ h2 {
 }
 
 .top-container {
-  flex: 0 0 10%; /* Adjust the height as needed */
+  flex: 0 0 auto; /* Adjust the height as needed */
   display: flex;
-  justify-content: center;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
   align-items: center;
-  padding: 10px;
+  padding-top: 10px;
   border-bottom: 1px solid #2e2e2e;
+  
+}
+
+
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center; /* Ensure buttons are centered */
+  padding-bottom: 0; /* No padding at the bottom */
+}
+
+.nav-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #121212;
+  color: darkgray;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 5px 5px 0 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-button.active, .nav-button:hover {
+  background-color: #171717;
+  color: #f5ba13;
 }
 
 .bottom-container {
@@ -76,9 +103,8 @@ h2 {
   background-color: #151515;
   border-radius: 5px;
   width: 100%;
+  margin-top: 0; /* No margin at the top */
 }
-
-
 
 #thumbnail-container {
   display: grid;

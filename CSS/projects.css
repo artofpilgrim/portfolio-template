@@ -17,6 +17,26 @@ body {
   margin: 0;
 }
 
+/* Add this to your existing CSS */
+
+.home-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #191919;
+  font-size: 24px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  z-index: 10;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.home-button:hover {
+  color: #f5ba13;
+}
+
+
 /* Main Container Styling */
 .container {
   display: flex;
@@ -124,22 +144,6 @@ h3 {
   user-select: none;
 }
 
-/* Project Tags Container Styling */
-.project-tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  padding-left: 10px;
-}
-.software-tag {
-  background-color: #2d2d2d;
-  color: darkgray;
-  padding: 5px 10px;
-  border-radius: 0.25em;
-  font-size: 14px;
-  white-space: nowrap; /* Prevent tags from breaking into multiple lines */
-}
-
 /* Media Content Styling */
 #project-media {
   width: 100%;
@@ -190,3 +194,4 @@ h3 {
     height: 100vh;
   }
 }
+

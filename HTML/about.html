@@ -18,7 +18,13 @@
   <body>
     <div class="top-container">
       <!-- Placeholder div where user information will dynamically be added -->
-      <div class="user-info-panel"></div>
+      <div class="user-info-panel">
+        <!-- User information will be injected here by JS -->
+        <div class="navigation-buttons">
+            <a href="index.html" class="nav-button">Portfolio</a>
+            <a href="about.html" class="nav-button">About</a>
+        </div>
+    </div>
     </div>
     <div class="bottom-container">
       <div class="horizontal-container">
@@ -56,5 +62,18 @@
     <script src="../JS/userinformation.js"></script>
     <script src="../JS/recommendations.js"></script>
     <script src="../JS/productions.js"></script>
-  </body>
+  <<script>
+    // JavaScript to add 'active' class to the current page's navigation button
+    document.addEventListener("DOMContentLoaded", function() {
+      const currentPath = window.location.pathname.split('/').pop();
+      const navButtons = document.querySelectorAll('.nav-button');
+      
+      navButtons.forEach(button => {
+        if (button.getAttribute('href') === currentPath) {
+          button.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
 </html>

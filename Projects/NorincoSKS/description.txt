@@ -1,1 +1,9 @@
-Hey! SKS model i made for Rust. A bunch of random renders i made throughout development towards the end. Was such a fun process making this one!
+Norinco SKS - Rust
+---
+Hey! This is an SKS model I made for Rust. A bunch of random renders I made throughout development towards the end. Was such a fun process making this one!
+---
+blender, zbrush, marmoset toolbag, unity
+---
+https://files.facepunch.com/tom/1b/T0Bhou5i89.png
+---
+sks.html

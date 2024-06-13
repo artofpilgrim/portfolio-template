@@ -1,11 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Function to fetch and display project description
+    // Function to fetch and display project description, title, and tags
     const fetchDescription = () => {
         fetch('description.txt')
             .then(response => response.text())
             .then(text => {
-                const lines = text.split('\n').map(line => line.trim()).filter(line => line);
-                document.getElementById('project-description').textContent = lines.join(' ');
+                const [title, description, tags] = text.split('---').map(line => line.trim());
+                document.getElementById('project-title').textContent = title;
+                document.title = title; // Set the document title as well
+                document.getElementById('project-description').textContent = description;
+                
+                const tagsContainer = document.getElementById('project-tags');
+                const tagsArray = tags.split(',').map(tag => tag.trim());
+                tagsArray.forEach(tag => {
+                    const tagElement = document.createElement('div');
+                    tagElement.className = 'software-tag';
+                    tagElement.textContent = tag;
+                    tagsContainer.appendChild(tagElement);
+                });
             })
             .catch(error => console.error('Error loading project description:', error));
     };
@@ -45,18 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error loading project media:', error));
     };
 
-    // Function to set the project title based on the folder name or HTML file name
-    const setProjectTitle = () => {
-        const pathArray = window.location.pathname.split('/');
-        const folderName = pathArray[pathArray.length - 2];
-        const htmlFileName = pathArray[pathArray.length - 1].split('.')[0];
-        const projectTitle = folderName || htmlFileName;
-        document.getElementById('project-title').textContent = projectTitle.replace(/-/g, ' ');
-        document.title = projectTitle.replace(/-/g, ' '); // Set the document title as well
-    };
-
     // Initialize the functions
-    setProjectTitle();
     fetchDescription();
     loadMedia();
 });

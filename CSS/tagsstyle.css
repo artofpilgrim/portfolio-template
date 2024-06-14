@@ -1,0 +1,16 @@
+/* Project Tags Container Styling */
+.project-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-left: 10px;
+}
+.software-tag {
+  background-color: #2d2d2d;
+  color: darkgray;
+  padding: 5px 10px;
+  border-radius: 0.25em;
+  font-size: 14px;
+  user-select: none;
+  white-space: nowrap; /* Prevent tags from breaking into multiple lines */
+}

@@ -13,7 +13,7 @@ function addUserInformation() {
         .then(response => response.text())
         .then(data => {
             const lines = data.split('\n').map(line => line.trim());
-            const [profilePicUrl, profileName, profileRole, ...socials] = lines;
+            const [profilePicUrl, profileName, profileRole, location, ...socials] = lines;
 
             // Get the container where the user info should be added
             const container = document.querySelector('.top-container'); // Select the specific container
@@ -39,6 +39,21 @@ function addUserInformation() {
             const userRole = document.createElement("h2");
             userRole.textContent = profileRole; // Your Current Title & Studio from txt
             userInfoPanel.appendChild(userRole);
+
+            // Create and append the location
+            const userLocationContainer = document.createElement("div");
+            userLocationContainer.className = "user-location-container";
+
+            const locationIcon = document.createElement("span");
+            locationIcon.className = "material-symbols-outlined";
+            locationIcon.textContent = "explore";
+            userLocationContainer.appendChild(locationIcon);
+
+            const userLocation = document.createElement("h2");
+            userLocation.textContent = location; // Your Location from txt
+            userLocationContainer.appendChild(userLocation);
+
+            userInfoPanel.appendChild(userLocationContainer);
 
             // Create and append the social icons
             const socialIcons = document.createElement("div");

@@ -7,21 +7,18 @@ html, body {
     box-sizing: border-box;
 }
 
-
-
 *, *::before, *::after {
     box-sizing: inherit;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Montserrat, sans-serif;
     background-color: #121212;
     color: #d7d7d7;
     display: flex;
     flex-direction: column;
     height: 100vh; /* Full viewport height */
     overflow: auto; /* Enable scrolling for the whole body */
-    
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -39,14 +36,14 @@ body {
     overflow-y: scroll; /* Allows vertical scrolling */
 }
 
-
 h1 {
     font-size: 20px;
     margin: 0;
     margin-bottom: 5px;
     color: white;
     user-select: none;
-    color: #d7d7d7;
+    font-weight: 400;
+    text-align: left; /* Ensure all h1 elements are aligned to the left */
 }
 
 h2 {
@@ -66,8 +63,11 @@ h2 {
     align-items: center;
     padding-top: 10px;
     border-bottom: 1px solid #2e2e2e;
-    
-  }
+}
+
+hr {
+    opacity: .05;
+}
 
 .bottom-container {
     flex: 1; /* Take up remaining space */
@@ -79,215 +79,32 @@ h2 {
     width: 100%;
     gap: 10px;
     border-radius: 5px;
-    
 }
 
 .horizontal-container {
-    display: flex;
-    gap: 10px;
-    width: 65%;
-    box-sizing: border-box;
-    background-color: #151515;
-    margin: auto; /* Center these elements within .bottom-container */
-}
-
-.summary-panel, .recommendations-panel, .productions-panel, .skills-panel {
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    padding: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.skills-panel {
-    background:none;
-}
-
-.productions-panel {
-    background-color: #151515;
-    width: 100%
-}
-
-.skills-panel {
-    display: flex;
-    flex-direction: column; /* Keep the title on top and tags below */
-    align-items: center; /* Center-align the container's contents */
-    gap: 10px; /* Space between the title and the tag list */
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%; /* Ensure it takes full width of its parent */
-}
-
-.skills-panel .software-tag-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Align items to the start (left) */
-    gap: 10px;
-    width: 100%;
+    width: 65%; /* Adjust the width as needed */
+    margin: auto;
 }
 
 
-.software-tag {
-    background-color: #2d2d2d;
-    color: lightgray;
-    padding: 5px 10px;
-    border-radius: .25em;
-    font-size: 14px;
-    white-space: nowrap; /* Prevent tags from breaking into multiple lines */
+.panel-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #d7d7d7;
+    text-align: left; /* Align panel titles to the left */
 }
 
 
-
-
-.recommendation-content {
-    flex-grow: 1; /* Takes up all available space */
-    position: relative; /* Context for absolute positioning of recommendations */
-    width: 100%; /* Full width of its parent */
-    min-height: 350px; /* Minimum height to ensure space for content */
-    overflow: hidden; /* Keeps all recommendations within the div */
-}
-
-
-.recommendation {
-    width: 100%;
-    display: none; /* Hide all initially */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: opacity 0.5s;
-    position: absolute; /* Allow absolute positioning for sliding effect */
-    top: 0; /* Align at the top inside the relative container */
-    left: 0; /* Align to the left */
-}
-
-.recommendation.active {
-    display: flex; /* Only display the active recommendation */
-    opacity: 1;
-    visibility: visible;
-}
-
-.recommendation h2 {
-    font-size: 20px;
-    margin: 5px 0;
-    color: #f5ba13;
-}
-
-.recommendation h3 {
-    font-size: 18px;
-    margin: 5px 0;
-    color: #cccccc;
-}
-
-.recommendation-date {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #999999;
-}
-
-.recommendation-quote {
-    font-size: 16px;
-    margin: 10px 0;
-    color: grey;
-    line-height: 1.5;
-}
-
-.recommendation-dots {
-    position: absolute;
-    bottom: 10px; /* Position dots at the bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-}
-
-.dot {
-    height: 10px;
-    width: 10px;
-    background-color: #e0e0e0;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.dot.active {
-    background-color: #f5ba13;
-}
 
 p {
     font-size: 16px;
     line-height: 1.4;
-    color: grey;      
+    color: grey;
 }
 
 .summary-panel p {
     text-align: justify;
-    padding: 5px;   
-}
-
-.productions-subpanels {
-    display: flex;
-    flex-direction: column; /* Stacks children vertically */
-    align-items: center; /* Centers cards horizontally */
-    width: 100%; /* Uses the full width of its parent container */
-    gap: 5px; /* Space between each card */
-}
-
-.production-subpanel {
-    padding: 10px;
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    width: 65%; /* Adjusts the width to be 80% of the parent container */
-    height: auto; /* Adjusts height based on content */
-    max-height: 400px; /* Limits maximum height for consistency */
-    margin-bottom: 20px; /* Space between each card */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds shadow for better depth */
-    display: flex; /* Enables flexbox layout */
-    align-items: flex-start; /* Aligns items to the start vertically */
-}
-
-.production-subpanel img {
-    width: 200px; /* Width of the thumbnail */
-    height: auto; /* Height adjusts based on aspect ratio */
-    object-fit: cover; /* Ensures cover fit for the image */
-    border-radius: 5px; /* Rounded corners */
-    margin-right: 20px; /* Space between image and text */
-}
-
-.production-details {
-    display: flex;
-    flex-direction: column; /* Stacks title, company, and time vertically */
-    align-items: flex-start; /* Aligns items to the start */
-}
-
-.production-content {
-    flex-grow: 1; /* Allows the description to take remaining space */
-    display: flex;
-    flex-direction: column; /* Optionally control layout of the description */
-    justify-content: flex-start; /* Aligns description to the start */
-}
-
-.production-subpanel h2 {
-    margin: 5px 0; /* Margins for spacing */
-    color: #d7d7d7; /* Text color */
-    text-align: left; /* Aligns text to the left */
-} 
-
-.production-subpanel p {
-    margin: 5px 0; /* Margins for spacing */
-    color: grey; /* Text color */
-    text-align: left; /* Aligns text to the left */
-}
-
-.production-subpanel h2 {
-    font-size: 20px; /* Font size for the title */
-}
-
-.production-subpanel p {
-    font-size: 16px; /* Font size for the paragraphs */
+    padding: 5px;
 }
 
 .navigation-buttons {
@@ -295,9 +112,9 @@ p {
     gap: 1rem;
     justify-content: center; /* Ensure buttons are centered */
     padding-bottom: 0; /* No padding at the bottom */
-  }
-  
-  .nav-button {
+}
+
+.nav-button {
     padding: 10px 20px;
     border: none;
     background-color: #121212;
@@ -307,10 +124,9 @@ p {
     text-decoration: none;
     border-radius: 5px 5px 0 0;
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .nav-button.active, .nav-button:hover {
+}
+
+.nav-button.active, .nav-button:hover {
     background-color: #171717;
     color: #f5ba13;
-  }
-  
+}

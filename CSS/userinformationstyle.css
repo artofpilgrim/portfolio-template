@@ -1,0 +1,63 @@
+/* User Information Styles */
+.user-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.user-info-panel {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.user-info-panel h1 {
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Social Icons Styles */
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  opacity: 1;
+  transition: opacity 0.5s;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.social-icons a {
+  color: #272727;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #edb049;
+}
+
+.user-location-container {
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  gap: 5px; /* Adjust the gap between the icon and the text */
+}
+
+.material-symbols-outlined {
+  font-size: 1.2em; /* Adjust the size of the icon */
+  color: grey;
+}
+
+.user-location-container h2 {
+  margin: 0;
+}

@@ -1,0 +1,78 @@
+.productions-subpanels {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    align-items: center; /* Align items to the start (left) */
+    width: 100%; /* Uses the full width of its parent container */
+    gap: 5px; /* Space between each card */
+}
+
+.production-subpanel {
+    padding: 10px;
+    background-color: #121212;
+    border-radius: 5px;
+    width: 65%; /* Adjusts the width to be 80% of the parent container */
+    height: auto; /* Adjusts height based on content */
+    max-height: 400px; /* Limits maximum height for consistency */
+    margin-bottom: 20px; /* Space between each card */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds shadow for better depth */
+    display: flex; /* Enables flexbox layout */
+    align-items: flex-start; /* Aligns items to the start vertically */
+}
+
+.production-subpanel img {
+    width: 200px; /* Width of the thumbnail */
+    height: auto; /* Height adjusts based on aspect ratio */
+    object-fit: cover; /* Ensures cover fit for the image */
+    border-radius: 5px; /* Rounded corners */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.production-details {
+    display: flex;
+    flex-direction: column; /* Stacks title, company, and time vertically */
+    align-items: flex-start; /* Aligns items to the start */
+}
+
+.production-content {
+    flex-grow: 1; /* Allows the description to take remaining space */
+    display: flex;
+    flex-direction: column; /* Optionally control layout of the description */
+    justify-content: flex-start; /* Aligns description to the start */
+}
+
+.productions-panel {
+    border-radius: 5px;
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start (left) */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 20px;
+    background-color: #151515;
+    width: 100%;
+}
+
+.productions-panel h1 {
+    margin-bottom: 20px;
+}
+
+.production-subpanel h2 {
+    margin: 5px 0; /* Margins for spacing */
+    color: #d7d7d7; /* Text color */
+    text-align: left; /* Aligns text to the left */
+}
+
+.production-subpanel p {
+    margin: 5px 0; /* Margins for spacing */
+    color: grey; /* Text color */
+    text-align: left; /* Aligns text to the left */
+}
+
+.production-subpanel h2 {
+    font-size: 20px; /* Font size for the title */
+}
+
+.production-subpanel p {
+    font-size: 16px; /* Font size for the paragraphs */
+}

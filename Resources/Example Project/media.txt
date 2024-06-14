@@ -1,0 +1,4 @@
+list all your media urls here. Separate images with a new line. 
+Add descriptions under each piece of media.txt
+
+(supported formats: png/gif/jpg/mp4/youtube)

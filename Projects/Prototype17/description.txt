@@ -1,0 +1,11 @@
+Prototype 17 - Rust
+---
+As I wind down for the Christmas break - i just wanted to update an old texture for the Prototype 17 Pistol in Rust (https://www.artstation.com/artwork/qQz0yz). Nothing official just general practice.
+Oh i made an app to help with hardsurface work like this for production - feel free to download for free! https://pilgrimsart.gumroad.com/l/hardsurfacecheck
+Hope everyone has a great Christmas break!
+---
+Blender, Zbrush, Substance Painter, Marmoset Toolbag, Unity
+---
+https://files.facepunch.com/tom/1b/VYavkzQaAa.jpg
+---
+prototype17.html

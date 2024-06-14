@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>John Doe About</title>
     <link rel="stylesheet" href="../CSS/aboutstyle.css" />
-    <link rel="stylesheet" href="../CSS/userinformationstyle.css">
-    <link rel="stylesheet" href="../CSS/softwareskillsstyle.css">
-    <link rel="stylesheet" href="../CSS/recommendationsstyle.css">
-    <link rel="stylesheet" href="../CSS/productionsstyle.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="../CSS/userinformationstyle.css" />
+    <link rel="stylesheet" href="../CSS/softwareskillsstyle.css" />
+    <link rel="stylesheet" href="../CSS/recommendationsstyle.css" />
+    <link rel="stylesheet" href="../CSS/productionsstyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="top-container">
-        <!-- Placeholder div where user information will dynamically be added -->
-        <div class="user-info-panel">
-            <!-- User information will be injected here by JS -->
-            <div class="navigation-buttons">
-                <a href="index.html" class="nav-button">Portfolio</a>
-                <a href="about.html" class="nav-button">About</a>
-            </div>
+      <!-- Placeholder div where user information will dynamically be added -->
+      <div class="user-info-panel">
+        <!-- User information will be injected here by JS -->
+        <div class="navigation-buttons">
+          <a href="index.html" class="nav-button">Portfolio</a>
+          <a href="about.html" class="nav-button">About</a>
         </div>
+      </div>
     </div>
     <div class="bottom-container">
-        <div class="horizontal-container">
-            <h1 class="panel-title">Summary</h1>
-            <div class="summary-panel">
-                <p><!-- Summary will be dynamically inserted here --></p>
-            </div>
-            <hr>
-            &nbsp; &nbsp; &nbsp; 
-            <h1 class="panel-title">Recommendations</h1>
-            <div class="recommendations-panel">
-                <div class="recommendation-content">
-                    <!-- Recommendations get inserted here -->
-                    <div class="recommendation-dots" id="recommendation-dots"></div>
-                </div>
-            </div>
-            <hr>
-            &nbsp; &nbsp; &nbsp; 
-            <h1 class="panel-title">Software Knowledge</h1>
-            <div class="skills-panel">
-                <div class="software-tag-container">
-                    <!-- Software tags will be dynamically inserted here -->
-                </div>
-                
-            &nbsp; &nbsp; &nbsp; 
-                <h1 class="panel-title">Skills</h1>
-                <div class="software-tag-container">
-                    <!-- Skills tags will be dynamically inserted here -->
-                </div>
-            </div>
-            <hr>
+      <div class="horizontal-container">
+        <h1 class="panel-title">Summary</h1>
+        <div class="summary-panel">
+          <p><!-- Summary will be dynamically inserted here --></p>
         </div>
-    </div>
-    
-    <div class="productions-panel">
+        <hr />
+        &nbsp; &nbsp; &nbsp;
+        <h1 class="panel-title">Recommendations</h1>
+        <div class="recommendations-panel">
+          <div class="recommendation-content">
+            <!-- Recommendations get inserted here -->
+            <div class="recommendation-dots" id="recommendation-dots"></div>
+          </div>
+        </div>
+        <hr />
+        &nbsp; &nbsp; &nbsp;
+        <h1 class="panel-title">Software Knowledge</h1>
+        <div class="skills-panel">
+          <div class="software-tag-container">
+            <!-- Software tags will be dynamically inserted here -->
+          </div>
 
-        <div class="productions-subpanels">
-            <h1 class="panel-title">Productions & Experience</h1>
-            <!-- Production cards will be added here -->
+          &nbsp; &nbsp; &nbsp;
+          <h1 class="panel-title">Skills</h1>
+          <div class="software-tag-container">
+            <!-- Skills tags will be dynamically inserted here -->
+          </div>
         </div>
+        <hr />
+      </div>
+    </div>
+
+    <div class="productions-panel">
+      <div class="productions-subpanels">
+        <h1 class="panel-title">Productions & Experience</h1>
+        <!-- Production cards will be added here -->
+      </div>
     </div>
     <script src="../JS/summary.js"></script>
     <script src="../JS/skills.js"></script>
@@ -70,16 +78,16 @@
     <script src="../JS/recommendations.js"></script>
     <script src="../JS/productions.js"></script>
     <script>
-        // JavaScript to add 'active' class to the current page's navigation button
-        document.addEventListener("DOMContentLoaded", function() {
-            const currentPath = window.location.pathname.split('/').pop();
-            const navButtons = document.querySelectorAll('.nav-button');
-            navButtons.forEach(button => {
-                if (button.getAttribute('href') === currentPath) {
-                    button.classList.add('active');
-                }
-            });
+      // JavaScript to add 'active' class to the current page's navigation button
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPath = window.location.pathname.split("/").pop();
+        const navButtons = document.querySelectorAll(".nav-button");
+        navButtons.forEach((button) => {
+          if (button.getAttribute("href") === currentPath) {
+            button.classList.add("active");
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,4 @@
+Triangles: 14,069
+Texture Sets: 1
+Texture Size: 4096x4096
+PBR Workflow: Metal/Rough

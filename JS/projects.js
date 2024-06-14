@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Function to fetch and display project description, title, and tags
+    let projects = [];
+
+    const fetchProjects = () => {
+        return fetch('../../Config/projects.txt')
+            .then(response => response.text())
+            .then(text => text.split('\n').map(line => line.trim()).filter(line => line))
+            .catch(error => console.error('Error loading projects:', error));
+    };
+
     const fetchDescription = () => {
         fetch('description.txt')
             .then(response => response.text())
@@ -21,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error loading project description:', error));
     };
 
-    // Function to load media files from media.txt
     const loadMedia = () => {
         fetch('media.txt')
             .then(response => response.text())
@@ -34,8 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const url = lines[i];
                     let description = '';
                     
-                    // Check if the next line is a description
-                    if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm)$/) && !lines[i + 1].includes('youtube.com')) {
+                    if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm)$/) && !lines[i + 1].includes('youtube.com') && !lines[i + 1].includes('sketchfab.com')) {
                         description = lines[i + 1];
                         i += 1;
                     }
@@ -61,6 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
                         iframe.allowFullscreen = true;
                         mediaElement.appendChild(iframe);
+                    } else if (url.includes('sketchfab.com')) {
+                        const sketchfabId = url.split('/').pop().split('-').pop();
+                        mediaElement = document.createElement('div');
+                        mediaElement.className = 'responsive-iframe-container';
+                        const iframe = document.createElement('iframe');
+                        iframe.src = `https://sketchfab.com/models/${sketchfabId}/embed`;
+                        iframe.allow = 'autoplay; fullscreen; vr';
+                        iframe.allowFullscreen = true;
+                        mediaElement.appendChild(iframe);
                     }
 
                     if (description) {
@@ -77,7 +92,80 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error loading project media:', error));
     };
 
-    // Initialize the functions
-    fetchDescription();
-    loadMedia();
+    const fetchStats = () => {
+        fetch('stats.txt')
+            .then(response => response.text())
+            .then(text => {
+                const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+                const statsContainer = document.getElementById('project-stats');
+                const iconMap = {
+                    'Triangles': 'change_history',
+                    'Texture Sets': 'texture',
+                    'Texture Size': 'straighten',
+                    'PBR Workflow': 'brush'
+                };
+
+                const iconClassMap = {
+                    'Triangles': 'triangle-icon',
+                    'Texture Sets': 'texture-icon',
+                    'Texture Size': 'size-icon',
+                    'PBR Workflow': 'workflow-icon'
+                };
+
+                lines.forEach(line => {
+                    const [key, value] = line.split(':').map(part => part.trim());
+                    if (value) {
+                        const statElement = document.createElement('div');
+                        statElement.className = 'stat';
+                        
+                        const icon = iconMap[key];
+                        const iconClass = iconClassMap[key];
+                        if (icon) {
+                            const iconElement = document.createElement('span');
+                            iconElement.className = `material-icons stat-icon ${iconClass}`;
+                            iconElement.textContent = icon;
+                            statElement.appendChild(iconElement);
+                        }
+
+                        const textElement = document.createElement('span');
+                        textElement.innerHTML = `<strong>${key}:</strong> ${value}`;
+                        statElement.appendChild(textElement);
+
+                        statsContainer.appendChild(statElement);
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading project stats:', error));
+    };
+
+    const navigateProjects = (direction) => {
+        const currentProject = window.location.pathname.split('/').slice(-2, -1)[0];
+        const currentIndex = projects.indexOf(currentProject);
+
+        if (currentIndex !== -1) {
+            let newIndex = currentIndex + direction;
+            if (newIndex < 0) newIndex = projects.length - 1;
+            if (newIndex >= projects.length) newIndex = 0;
+
+            const newProject = projects[newIndex];
+            fetch(`../${newProject}/description.txt`)
+                .then(response => response.text())
+                .then(text => {
+                    const htmlFileName = text.split('---')[4].trim(); // Extract the HTML filename from the description.txt
+                    window.location.href = `../${newProject}/${htmlFileName}`;
+                })
+                .catch(error => console.error('Error loading next project description:', error));
+        }
+    };
+
+    fetchProjects().then(projectList => {
+        projects = projectList;
+
+        document.getElementById('prev-project').addEventListener('click', () => navigateProjects(-1));
+        document.getElementById('next-project').addEventListener('click', () => navigateProjects(1));
+
+        fetchDescription();
+        loadMedia();
+        fetchStats(); // Fetch and display the stats
+    });
 });

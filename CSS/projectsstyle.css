@@ -17,25 +17,23 @@ body {
   margin: 0;
 }
 
-/* Add this to your existing CSS */
-
 .home-button {
-  position: absolute;
+  position: fixed;
   top: 10px;
   left: 10px;
-  color: #191919;
+  color: darkgrey;
   font-size: 24px;
   padding: 10px;
   text-align: center;
   text-decoration: none;
   z-index: 10;
   transition: background-color 0.3s, color 0.3s;
+  filter: drop-shadow(0 0 0.1rem black);
 }
 
 .home-button:hover {
   color: #edb049;
 }
-
 
 /* Main Container Styling */
 .container {
@@ -53,10 +51,10 @@ h1 {
 
 h2 {
   font-size: 16px;
-    color: grey;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    user-select: none;
+  color: grey;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  user-select: none;
 }
 
 h3 {
@@ -68,6 +66,7 @@ h3 {
 
 /* Media Container Styling */
 .media-container {
+  position: relative;
   flex: 0 0 80%; /* Take up 80% of the width */
   background-color: #151515;
   display: flex;
@@ -76,6 +75,8 @@ h3 {
   padding: 2px;
   overflow-y: auto; /* Enable vertical scrolling */
   height: 100vh; /* Full viewport height */
+  -ms-overflow-style: none;  /* Hide scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
 }
 
 /* Hide Scrollbar */
@@ -83,11 +84,36 @@ h3 {
   display: none; /* Hide scrollbar for WebKit browsers */
 }
 
-.media-container {
-  -ms-overflow-style: none;  /* Hide scrollbar for Internet Explorer and Edge */
-  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+.info-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for WebKit browsers */
 }
 
+.nav-button {
+  background-color: #121212;
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.nav-button:hover {
+  opacity: 1;
+}
+
+#prev-project {
+  left: calc((100vw - 100%) / 2 + 10px); /* Adjust to the left within media-container */
+}
+
+#next-project {
+  right: calc((100vw - 60%) / 2 + 10px); /* Adjust to the right within media-container */
+}
 
 /* Info Container Styling */
 .info-container {
@@ -99,6 +125,7 @@ h3 {
   gap: 10px;
   overflow: hidden;
   border-left: 1px solid #272727;
+  overflow: auto;
 }
 
 /* Top Container Styling */
@@ -111,7 +138,6 @@ h3 {
 /* Project Description Container Styling */
 .project-description-container {
   padding: 10px;
-
 }
 
 .project-description-container h1 {
@@ -145,7 +171,6 @@ h3 {
   text-align: center;
 }
 
-
 /* Media Content Styling */
 #project-media {
   width: 100%;
@@ -158,13 +183,53 @@ h3 {
   display: block;
   width: 100%;
   height: auto;
-  
 }
 
 #project-media video {
   width: 100%;
   height: auto;
-  
+}
+
+.project-stats-container {
+  padding: 10px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: darkgrey;
+}
+
+.stat-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.triangle-icon {
+  color: #a3e4b9; /* Pastel green */
+}
+
+.texture-icon {
+  color: #F1948A; /* Pastel red */
+}
+
+.size-icon {
+  color: #85C1E9; /* Pastel blue */
+}
+
+.workflow-icon {
+  color: #F5F5F5; /* White */
+}
+
+.stat strong {
+  margin-right: 5px;
+  font-weight: 400;
+}
+
+
+hr {
+  opacity: .05;
 }
 
 /* Responsive Iframe */
@@ -183,7 +248,6 @@ h3 {
   width: 100%;
   height: 100%;
   border: none;
-
 }
 
 .responsive-iframe-container iframe, #project-media video, #project-media img {
@@ -201,4 +265,3 @@ h3 {
     height: 100vh;
   }
 }
-

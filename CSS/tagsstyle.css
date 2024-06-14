@@ -4,6 +4,8 @@
   flex-wrap: wrap;
   gap: 5px;
   padding-left: 10px;
+  padding-bottom: 10px;
+  padditon-top: 10px;
 }
 .software-tag {
   background-color: #2d2d2d;

@@ -1,0 +1,9 @@
+Project Name
+---
+Description
+---
+Tags - separated by commas
+---
+thumbnail url
+---
+name of html ("xyz.html" for example)

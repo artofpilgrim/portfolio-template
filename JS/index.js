@@ -1,5 +1,5 @@
 // Function to create a thumbnail with overlay icons
-function createThumbnail(src, alt, galleryPageUrl, hasMultipleImages, hasVideo, hasYouTube) {
+function createThumbnail(src, alt, galleryPageUrl, hasMultipleImages, hasVideo, hasYouTube, hasSketchfab) {
     const thumbnailLink = document.createElement("a");
     thumbnailLink.href = galleryPageUrl;
 
@@ -37,6 +37,15 @@ function createThumbnail(src, alt, galleryPageUrl, hasMultipleImages, hasVideo, 
         youtubeIcon.className = "fa-brands fa-youtube overlay-icon";
         youtubeIcon.style.left = `${10 + iconIndex * 30}px`;
         thumbnailDiv.appendChild(youtubeIcon);
+        iconIndex++;
+    }
+
+    if (hasSketchfab) {
+        const sketchfabIcon = document.createElement("i");
+        sketchfabIcon.className = "fa-solid fa-cube overlay-icon";
+        sketchfabIcon.style.left = `${10 + iconIndex * 30}px`;
+        thumbnailDiv.appendChild(sketchfabIcon);
+        iconIndex++;
     }
 
     thumbnailDiv.appendChild(thumbnailImg);
@@ -66,8 +75,9 @@ function fetchProjectData(projectName) {
         const hasMultipleImages = mediaLines.filter(line => line.match(/\.(jpeg|jpg|gif|png)$/)).length > 1;
         const hasVideo = mediaLines.some(line => line.match(/\.(mp4)$/));
         const hasYouTube = mediaLines.some(line => line.includes('youtube.com'));
+        const hasSketchfab = mediaLines.some(line => line.includes('sketchfab.com'));
 
-        return { src: thumbnailUrl, alt: title, galleryPageUrl, hasMultipleImages, hasVideo, hasYouTube };
+        return { src: thumbnailUrl, alt: title, galleryPageUrl, hasMultipleImages, hasVideo, hasYouTube, hasSketchfab };
     })
     .catch(error => console.error('Error loading project data:', error));
 }
@@ -84,7 +94,7 @@ function fetchProjects() {
 fetchProjects().then(projects => {
     projects.forEach(projectName => {
         fetchProjectData(projectName).then(artwork => {
-            const thumbnail = createThumbnail(artwork.src, artwork.alt, artwork.galleryPageUrl, artwork.hasMultipleImages, artwork.hasVideo, artwork.hasYouTube);
+            const thumbnail = createThumbnail(artwork.src, artwork.alt, artwork.galleryPageUrl, artwork.hasMultipleImages, artwork.hasVideo, artwork.hasYouTube, artwork.hasSketchfab);
             thumbnailContainer.appendChild(thumbnail);
         });
     });

@@ -1,5 +1,5 @@
 # Each production should be separated by three dashes (---)
-# When you add one productions.js will automatically add it after saving
+# When you add one then productions.js will automatically add it after saving
 # Format: Title, Company, Time, Thumbnail URL, Description 
 ---
 Name of Production or Title

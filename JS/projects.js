@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let i = 0;
                 while (i < lines.length) {
-                    const url = lines[i];
+                    const url = lines[i].replace('*', '').trim();  // Remove asterisk if present
                     let description = '';
                     
                     if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm)$/) && !lines[i + 1].includes('youtube.com') && !lines[i + 1].includes('sketchfab.com')) {
@@ -100,16 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const statsContainer = document.getElementById('project-stats');
                 const iconMap = {
                     'Triangles': 'change_history',
-                    'Texture Sets': 'texture',
+                    'Materials': 'texture',
                     'Texture Size': 'straighten',
-                    'PBR Workflow': 'brush'
+                    'Target Engine': 'gamepad',
+                    'Workflow': 'brush'
                 };
 
                 const iconClassMap = {
                     'Triangles': 'triangle-icon',
-                    'Texture Sets': 'texture-icon',
+                    'Materials': 'material-icon',
                     'Texture Size': 'size-icon',
-                    'PBR Workflow': 'workflow-icon'
+                    'Target Engine': 'engine-icon',
+                    'Workflow': 'workflow-icon'
                 };
 
                 lines.forEach(line => {

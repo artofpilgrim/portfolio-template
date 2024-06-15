@@ -21,8 +21,8 @@ body {
   position: fixed;
   top: 10px;
   left: 10px;
-  color: darkgrey;
-  font-size: 24px;
+  color: lightgrey;
+  font-size: 20px;
   padding: 10px;
   text-align: center;
   text-decoration: none;
@@ -189,44 +189,6 @@ h3 {
   width: 100%;
   height: auto;
 }
-
-.project-stats-container {
-  padding: 10px;
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  color: darkgrey;
-}
-
-.stat-icon {
-  font-size: 24px;
-  margin-right: 10px;
-}
-
-.triangle-icon {
-  color: #a3e4b9; /* Pastel green */
-}
-
-.texture-icon {
-  color: #F1948A; /* Pastel red */
-}
-
-.size-icon {
-  color: #85C1E9; /* Pastel blue */
-}
-
-.workflow-icon {
-  color: #F5F5F5; /* White */
-}
-
-.stat strong {
-  margin-right: 5px;
-  font-weight: 400;
-}
-
 
 hr {
   opacity: .05;

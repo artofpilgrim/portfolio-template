@@ -77,7 +77,11 @@ function fetchProjectData(projectName) {
         const hasYouTube = mediaLines.some(line => line.includes('youtube.com'));
         const hasSketchfab = mediaLines.some(line => line.includes('sketchfab.com'));
 
-        return { src: thumbnailUrl, alt: title, galleryPageUrl, hasMultipleImages, hasVideo, hasYouTube, hasSketchfab };
+        // Find the banner image
+        const bannerImageLine = mediaLines.find(line => line.endsWith('*'));
+        const bannerImageUrl = bannerImageLine ? bannerImageLine.replace('*', '').trim() : null;
+
+        return { src: thumbnailUrl, alt: title, galleryPageUrl, hasMultipleImages, hasVideo, hasYouTube, hasSketchfab, bannerImageUrl };
     })
     .catch(error => console.error('Error loading project data:', error));
 }
@@ -92,10 +96,17 @@ function fetchProjects() {
 
 // Fetch projects and create thumbnails
 fetchProjects().then(projects => {
+    let bannerImageSet = false;
     projects.forEach(projectName => {
         fetchProjectData(projectName).then(artwork => {
             const thumbnail = createThumbnail(artwork.src, artwork.alt, artwork.galleryPageUrl, artwork.hasMultipleImages, artwork.hasVideo, artwork.hasYouTube, artwork.hasSketchfab);
             thumbnailContainer.appendChild(thumbnail);
+
+            // Set the banner image if not already set
+            if (!bannerImageSet && artwork.bannerImageUrl) {
+                document.querySelector('.top-container').style.backgroundImage = `url(${artwork.bannerImageUrl})`;
+                bannerImageSet = true;
+            }
         });
     });
 });

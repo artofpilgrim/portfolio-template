@@ -1,4 +1,5 @@
 Triangles: 34,500
-Texture Sets: 3
+Materials: 3
 Texture Size: 4096x4096
-PBR Workflow: Metal/Rough
+Workflow: PBR Metal/Rough
+Target Engine: Unity

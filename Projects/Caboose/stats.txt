@@ -1,4 +1,5 @@
 Triangles: Unknown
-Texture Sets: Many
+Materials: Many
 Texture Size: 1024x1024
-PBR Workflow: Metal/Rough
+Workflow: PBR Spec/Gloss
+Target Engine: Unity

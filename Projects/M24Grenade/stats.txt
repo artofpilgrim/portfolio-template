@@ -1,4 +1,4 @@
-Triangles: 14,069
+Triangles: 14,069 (it's a guess)
 Materials: 1
 Texture Size: 4096x4096
 Workflow: PBR Metal/Rough

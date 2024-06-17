@@ -1,26 +1,62 @@
 .project-stats-container {
-    padding: 10px;
-  }
-  
-  .stat {
-    display: flex;
-    align-items: center;
-    color: darkgrey;
-    font-size: 14px;
-    margin-right: 5px;
-    font-weight: 400;
-    user-select: none;
-  }
-  
-  .stat-icon {
-    margin-right: 10px;
-  }
-  
-  .triangle-icon, .material-icon, .engine-icon, .size-icon, .workflow-icon {
-    color: #373737; /* Pastel green */
-  }
-  
-  .stat strong {
-    margin-right: 5px;
-    font-weight: 400;
-  }
+  padding: 10px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: darkgrey;
+  font-size: 14px;
+  margin-right: 5px;
+  font-weight: 400;
+  user-select: none;
+}
+
+.stat-icon {
+  margin-right: 10px;
+}
+
+.triangle-icon, .material-icon, .engine-icon, .size-icon, .workflow-icon {
+  color: #373737; /* Pastel green */
+}
+
+.stat strong {
+  margin-right: 5px;
+  font-weight: 400;
+}
+
+.stat-info-icon {
+  margin-left: 5px;
+  color: #373737;
+  cursor: pointer;
+  position: relative;
+}
+
+.stat-info-icon:hover {
+  color: #f5ba13;
+}
+
+.tooltip {
+  display: none;
+  position: fixed; /* Use fixed positioning */
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1000; /* Ensure tooltip is above other elements */
+  font-size: 12px;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 10px;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}

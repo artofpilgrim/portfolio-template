@@ -15,7 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 const [title, description, tags] = text.split('---').map(line => line.trim());
                 document.getElementById('project-title').textContent = title;
                 document.title = title; // Set the document title as well
-                document.getElementById('project-description').textContent = description;
+
+                const descriptionContainer = document.getElementById('project-description');
+                if (description.length > 420) {
+                    const shortDescription = description.substring(0, 420);
+                    descriptionContainer.innerHTML = `${shortDescription}<span id="ellipsis">...</span><span id="full-description" style="display: none;">${description.substring(420)}</span><br><span id="toggle-description">Read More</span>`;
+                    
+                    const toggleDescription = document.getElementById('toggle-description');
+                    const fullDescription = document.getElementById('full-description');
+                    const ellipsis = document.getElementById('ellipsis');
+                    
+                    toggleDescription.addEventListener('click', () => {
+                        if (fullDescription.style.display === 'none') {
+                            fullDescription.style.display = 'inline';
+                            ellipsis.style.display = 'none';
+                            toggleDescription.textContent = 'Read Less';
+                        } else {
+                            fullDescription.style.display = 'none';
+                            ellipsis.style.display = 'inline';
+                            toggleDescription.textContent = 'Read More';
+                        }
+                    });
+                } else {
+                    descriptionContainer.textContent = description;
+                }
                 
                 const tagsContainer = document.getElementById('project-tags');
                 const tagsArray = tags.split(',').map(tag => tag.trim());
@@ -115,7 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 lines.forEach(line => {
-                    const [key, value] = line.split(':').map(part => part.trim());
+                    let [key, value] = line.split(':').map(part => part.trim());
+                    let info = '';
+
+                    if (value.includes('(') && value.includes(')')) {
+                        info = value.substring(value.indexOf('(') + 1, value.indexOf(')'));
+                        value = value.substring(0, value.indexOf('(')).trim();
+                    }
+
                     if (value) {
                         const statElement = document.createElement('div');
                         statElement.className = 'stat';
@@ -133,11 +163,57 @@ document.addEventListener('DOMContentLoaded', () => {
                         textElement.innerHTML = `<strong>${key}:</strong> ${value}`;
                         statElement.appendChild(textElement);
 
+                        if (info) {
+                            const infoIcon = document.createElement('i');
+                            infoIcon.className = 'fa-solid fa-circle-info stat-info-icon';
+                            infoIcon.removeAttribute('title');  // Remove the title attribute to avoid default tooltip
+
+                            const tooltip = document.createElement('div');
+                            tooltip.className = 'tooltip';
+                            tooltip.textContent = info;
+
+                            statElement.appendChild(infoIcon);
+                            statElement.appendChild(tooltip);
+
+                            infoIcon.addEventListener('mouseover', (event) => {
+                                tooltip.style.display = 'block';
+                                positionTooltip(event, tooltip);
+                            });
+
+                            infoIcon.addEventListener('mousemove', (event) => {
+                                positionTooltip(event, tooltip);
+                            });
+
+                            infoIcon.addEventListener('mouseout', () => {
+                                tooltip.style.display = 'none';
+                            });
+                        }
+
                         statsContainer.appendChild(statElement);
                     }
                 });
             })
             .catch(error => console.error('Error loading project stats:', error));
+    };
+
+    const positionTooltip = (event, tooltip) => {
+        const tooltipRect = tooltip.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        let top = event.clientY - tooltipRect.height - 10;
+        let left = event.clientX;
+
+        if (top < 0) {
+            top = event.clientY + 10;
+        }
+
+        if (left + tooltipRect.width > viewportWidth) {
+            left = viewportWidth - tooltipRect.width - 10;
+        }
+
+        tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
     };
 
     const navigateProjects = (direction) => {

@@ -1,5 +1,5 @@
-Triangles: Unknown
-Materials: Many
+Triangles: Unknown (I never took stock)
+Materials: Many (I reused many already existing in-game materials)
 Texture Size: 1024x1024
 Workflow: PBR Spec/Gloss
 Target Engine: Unity

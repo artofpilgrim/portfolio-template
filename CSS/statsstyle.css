@@ -42,8 +42,8 @@
   position: fixed; /* Use fixed positioning */
   background-color: #333;
   color: #fff;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: .25em;
   z-index: 1000; /* Ensure tooltip is above other elements */
   font-size: 12px;
   transition: opacity 0.3s ease;

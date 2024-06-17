@@ -108,9 +108,52 @@ h3 {
   display: none; /* Hide scrollbar for WebKit browsers */
 }
 
+/* Twentytwenty Slider Styling */
+.twentytwenty-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.twentytwenty-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.twentytwenty-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-right: 2px solid #fff;
+}
+
+.twentytwenty-handle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+}
+
+
+
 .nav-button {
   background-color: #121212;
   border: none;
+  border-radius: 0.1em;
   color: white;
   font-size: 24px;
   padding: 10px;
@@ -119,7 +162,7 @@ h3 {
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
-  opacity: 0.7;
+  opacity: 0.2;
   transition: opacity 0.3s;
 }
 

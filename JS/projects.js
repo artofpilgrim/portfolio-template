@@ -64,14 +64,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     const url = lines[i].replace('*', '').trim();  // Remove asterisk if present
                     let description = '';
                     
-                    if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm)$/) && !lines[i + 1].includes('youtube.com') && !lines[i + 1].includes('sketchfab.com')) {
+                    if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm)$/) && !lines[i + 1].includes('youtube.com') && !lines[i + 1].includes('sketchfab.com') && !lines[i + 1].includes('(')) {
                         description = lines[i + 1];
                         i += 1;
                     }
 
                     let mediaElement;
 
-                    if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+                    if (url.includes('(') && url.includes(')')) {
+                        const images = url.slice(1, -1).split(' / ');
+                        if (images.length === 2) {
+                            mediaElement = document.createElement('div');
+                            mediaElement.className = 'twentytwenty-container';
+                            mediaElement.innerHTML = `
+                                <img src="${images[0]}" alt="Before">
+                                <img src="${images[1]}" alt="After">
+                            `;
+                        }
+                    } else if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
                         mediaElement = document.createElement('div');
                         const imgElement = document.createElement('img');
                         imgElement.src = url;
@@ -111,6 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     mediaContainer.appendChild(mediaElement);
                     i += 1;
                 }
+
+                // Initialize all twentytwenty containers
+                $('.twentytwenty-container').twentytwenty();
             })
             .catch(error => console.error('Error loading project media:', error));
     };
@@ -125,16 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Triangles': 'change_history',
                     'Materials': 'texture',
                     'Texture Size': 'straighten',
+                    'Texel Density': 'square_foot',
                     'Target Engine': 'gamepad',
-                    'Workflow': 'brush'
+                    'Workflow': 'brush',
+                    'Collaborators': 'groups'
                 };
 
                 const iconClassMap = {
                     'Triangles': 'triangle-icon',
                     'Materials': 'material-icon',
                     'Texture Size': 'size-icon',
+                    'Texel Density': 'td-icon',
                     'Target Engine': 'engine-icon',
-                    'Workflow': 'workflow-icon'
+                    'Workflow': 'workflow-icon',
+                    'Collaborators': 'collab-icon'
                 };
 
                 lines.forEach(line => {

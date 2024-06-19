@@ -81,6 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         const videoElement = document.createElement('video');
                         videoElement.src = url;
                         videoElement.controls = true;
+                        videoElement.autoplay = true;
+                        videoElement.loop = true;
+                        videoElement.muted = true;
                         mediaElement.appendChild(videoElement);
                     } else if (url.includes('youtube.com')) {
                         mediaElement = document.createElement('div');

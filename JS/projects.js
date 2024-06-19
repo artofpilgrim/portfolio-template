@@ -58,66 +58,112 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(text => {
                 const mediaContainer = document.getElementById('project-media');
                 const lines = text.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));
-
+    
                 let i = 0;
                 while (i < lines.length) {
-                    const url = lines[i].replace('*', '').trim();  // Remove asterisk if present
+                    let mediaElement;
                     let description = '';
-                    
-                    if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm)$/) && !lines[i + 1].includes('youtube.com') && !lines[i + 1].includes('sketchfab.com') && !lines[i + 1].includes(' / ')) {
+                    let urls = [lines[i]];
+    
+                    // Check if the next line is a description
+                    if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm)$/) && !lines[i + 1].includes('youtube.com') && !lines[i + 1].includes('sketchfab.com') && !lines[i + 1].includes(' // ')) {
                         description = lines[i + 1];
                         i += 1;
                     }
-
-                    let mediaElement;
-
-                    if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    
+                    // Check if the line contains a pair of images
+                    if (lines[i].includes(' // ')) {
+                        urls = lines[i].split(' // ').map(url => url.trim());
+                    }
+    
+                    if (urls[0].match(/\.(jpeg|jpg|gif|png)$/) != null) {
                         mediaElement = document.createElement('div');
-                        const imgElement = document.createElement('img');
-                        imgElement.src = url;
-                        mediaElement.appendChild(imgElement);
-                    } else if (url.match(/\.(mp4|webm)$/) != null) {
+                        mediaElement.className = 'media-item';
+                        
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'img-container';
+                        
+                        const imgElement1 = document.createElement('img');
+                        imgElement1.src = urls[0];
+                        imgElement1.className = 'image-1';
+    
+                        imgContainer.appendChild(imgElement1);
+    
+                        if (urls[1]) {
+                            const imgElement2 = document.createElement('img');
+                            imgElement2.src = urls[1];
+                            imgElement2.className = 'image-2';
+                            imgContainer.appendChild(imgElement2);
+    
+                            const sliderContainer = document.createElement('div');
+                            sliderContainer.className = 'slider-container';
+    
+                            const sliderLine = document.createElement('div');
+                            sliderLine.className = 'slider-line';
+                            
+                            const slider = document.createElement('input');
+                            slider.type = 'range';
+                            slider.min = '0';
+                            slider.max = '100';
+                            slider.value = '50';
+                            slider.className = 'image-slider';
+                            slider.addEventListener('input', () => {
+                                const value = slider.value;
+                                imgElement2.style.clipPath = `inset(0 0 0 ${value}%)`;
+                                sliderLine.style.left = `${value}%`;
+                            });
+    
+                            sliderContainer.appendChild(sliderLine);
+                            sliderContainer.appendChild(slider);
+    
+                            mediaElement.appendChild(imgContainer);
+                            mediaElement.appendChild(sliderContainer);
+                        } else {
+                            mediaElement.appendChild(imgContainer);
+                        }
+                    } else if (urls[0].match(/\.(mp4|webm)$/) != null) {
                         mediaElement = document.createElement('div');
+                        mediaElement.className = 'media-item';
                         const videoElement = document.createElement('video');
-                        videoElement.src = url;
+                        videoElement.src = urls[0];
                         videoElement.controls = true;
                         videoElement.autoplay = true;
                         videoElement.loop = true;
                         videoElement.muted = true;
                         mediaElement.appendChild(videoElement);
-                    } else if (url.includes('youtube.com')) {
+                    } else if (urls[0].includes('youtube.com')) {
                         mediaElement = document.createElement('div');
-                        mediaElement.className = 'responsive-iframe-container';
+                        mediaElement.className = 'media-item responsive-iframe-container';
                         const iframe = document.createElement('iframe');
-                        iframe.src = `https://www.youtube.com/embed/${new URL(url).searchParams.get('v')}`;
+                        iframe.src = `https://www.youtube.com/embed/${new URL(urls[0]).searchParams.get('v')}`;
                         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
                         iframe.allowFullscreen = true;
                         mediaElement.appendChild(iframe);
-                    } else if (url.includes('sketchfab.com')) {
-                        const sketchfabId = url.split('/').pop().split('-').pop();
+                    } else if (urls[0].includes('sketchfab.com')) {
+                        const sketchfabId = urls[0].split('/').pop().split('-').pop();
                         mediaElement = document.createElement('div');
-                        mediaElement.className = 'responsive-iframe-container';
+                        mediaElement.className = 'media-item responsive-iframe-container';
                         const iframe = document.createElement('iframe');
                         iframe.src = `https://sketchfab.com/models/${sketchfabId}/embed`;
                         iframe.allow = 'autoplay; fullscreen; vr';
                         iframe.allowFullscreen = true;
                         mediaElement.appendChild(iframe);
                     }
-
+    
                     if (description) {
                         const descElement = document.createElement('p');
                         descElement.className = 'media-description';
                         descElement.textContent = description;
                         mediaElement.appendChild(descElement);
                     }
-
+    
                     mediaContainer.appendChild(mediaElement);
                     i += 1;
                 }
             })
             .catch(error => console.error('Error loading project media:', error));
-    };
-
+    }; 
+    
     const fetchStats = () => {
         fetch('stats.txt')
             .then(response => response.text())

@@ -28,7 +28,8 @@ h1 {
   font-size: 20px;
   margin-bottom: 10px;
   color: white;
-  user-select: none;
+  -webkit-user-select: none; /* Standard property */
+  user-select: none; /* Safari and iOS support */
 }
 
 h2 {
@@ -36,13 +37,15 @@ h2 {
   color: grey;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  user-select: none;
+  -webkit-user-select: none; /* Standard property */
+  user-select: none; /* Safari and iOS support */
 }
 
 h3 {
   font-size: 16px;
   font-weight: 100;
-  user-select: none;
+  -webkit-user-select: none; /* Standard property */
+  user-select: none; /* Safari and iOS support */
   padding-left: 10px;
 }
 
@@ -80,6 +83,7 @@ h3 {
 }
 
 
+
 /* Minimal Scrollbar Styling */
 .media-container::-webkit-scrollbar {
   width: 6px; /* Width of the scrollbar */
@@ -91,7 +95,7 @@ h3 {
 
 .media-container::-webkit-scrollbar-thumb {
   background-color: #222222; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Roundness of the scrollbar thumb */
+  border-radius: 2px; /* Roundness of the scrollbar thumb */
 }
 
 .media-container::-webkit-scrollbar-thumb:hover {
@@ -159,7 +163,8 @@ h3 {
   margin: 0;
   margin-bottom: 5px;
   color: white;
-  user-select: none;
+  -webkit-user-select: none; /* Standard property */
+  user-select: none; /* Safari and iOS support */
   color: #d7d7d7;
   font-weight: 400;
 }
@@ -175,7 +180,8 @@ h3 {
   color: grey;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  user-select: none;
+  -webkit-user-select: none; /* Standard property */
+  user-select: none; /* Safari and iOS support */
 }
 
 .media-description {
@@ -205,7 +211,103 @@ h3 {
   background-color: #121212;
 }
 
+/* Style for the media item container */
+.media-item {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
 
+/* Style for the image container */
+.img-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* Style for the images */
+.img-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.img-container .image-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  clip-path: inset(0 0 0 50%); /* Start with the secondary image hidden */
+}
+
+/* Style for the slider container */
+.slider-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensure the slider container does not interfere with image clicks */
+}
+
+/* Style for the slider line */
+.slider-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 3;
+  transform: translateX(-50%);
+  pointer-events: none; /* Ensure the slider line does not interfere with image clicks */
+}
+
+/* Style for the image slider */
+.image-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  pointer-events: all; /* Allow the slider thumb to be clickable */
+}
+
+.image-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s;
+}
+
+.image-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s;
+}
+
+.image-slider::-webkit-slider-thumb:hover {
+  background: #dddddd;
+}
+
+.image-slider::-moz-range-thumb:hover {
+  background: #dddddd;
+}
 
 /* Media Content Styling */
 #project-media {

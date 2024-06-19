@@ -243,6 +243,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Back to Top Button Functionality
+    const backToTopButton = document.getElementById('back-to-top');
+
+    const mediaContainer = document.querySelector('.media-container');
+    mediaContainer.addEventListener('scroll', () => {
+        if (mediaContainer.scrollTop > 1000) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        mediaContainer.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
     fetchProjects().then(projectList => {
         projects = projectList;
 

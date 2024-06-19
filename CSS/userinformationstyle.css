@@ -14,6 +14,15 @@
   text-align: center;
 }
 
+.user-name-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-name-link:hover {
+  color: #edb049; /* Example hover color */
+}
+
 .user-info-panel h1 {
   font-weight: 400;
   margin-bottom: 5px;

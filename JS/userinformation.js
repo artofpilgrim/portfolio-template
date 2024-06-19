@@ -29,11 +29,16 @@ function addUserInformation() {
             img.className = "profile-pic";
             userInfoPanel.appendChild(img);
 
-            // Create and append the user name
+            // Create and append the user name as a link
+            const userNameLink = document.createElement("a");
+            userNameLink.href = "../../HTML/index.html";
+            userNameLink.className = "user-name-link";
+
             const userName = document.createElement("h1");
             userName.className = "user-name";
             userName.textContent = profileName; // Your Profile Name from txt
-            userInfoPanel.appendChild(userName);
+            userNameLink.appendChild(userName);
+            userInfoPanel.appendChild(userNameLink);
 
             // Create and append the user role
             const userRole = document.createElement("h2");

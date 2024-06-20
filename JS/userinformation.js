@@ -51,7 +51,7 @@ function addUserInformation() {
 
             const locationIcon = document.createElement("span");
             locationIcon.className = "material-symbols-outlined";
-            locationIcon.textContent = "explore";
+            locationIcon.textContent = "near_me";
             userLocationContainer.appendChild(locationIcon);
 
             const userLocation = document.createElement("h2");
@@ -74,7 +74,22 @@ function addUserInformation() {
                 'instagram': "fa-brands fa-instagram",
                 'youtube': "fa-brands fa-youtube",
                 'linkedin': "fab fa-linkedin",
-                'artstation': "fa-brands fa-artstation"
+                'artstation': "fa-brands fa-artstation",
+                'github': "fab fa-github",
+                'wordpress': "fab fa-wordpress",
+                'vimeo': "fab fa-vimeo",
+                'behance': "fab fa-behance",
+                'playstation': "fab fa-playstation",
+                'xbox': "fab fa-xbox",
+                'vk': "fab fa-vk",
+                'steam': "fab fa-steam",
+                'tumblr': "fab fa-tumblr",
+                'threads': "fab fa-threads",
+                'patreon': "fab fa-patreon",
+                'twitch': "fab fa-twitch",
+                'mixer': "fab fa-mixer",
+                'mastodon': "fab fa-mastodon",
+                'mailchimp': "fab fa-mailchimp"
             };
 
             // Adding social links based on the detected type
@@ -97,6 +112,36 @@ function addUserInformation() {
                     iconClass = socialIconMap['linkedin'];
                 } else if (social.includes('artstation.com')) {
                     iconClass = socialIconMap['artstation'];
+                } else if (social.includes('github.com')) {
+                    iconClass = socialIconMap['github'];
+                } else if (social.includes('wordpress.com')) {
+                    iconClass = socialIconMap['wordpress'];
+                } else if (social.includes('vimeo.com')) {
+                    iconClass = socialIconMap['vimeo'];
+                } else if (social.includes('behance.net')) {
+                    iconClass = socialIconMap['behance'];
+                } else if (social.includes('playstation.com')) {
+                    iconClass = socialIconMap['playstation'];
+                } else if (social.includes('xbox.com')) {
+                    iconClass = socialIconMap['xbox'];
+                } else if (social.includes('vk.com')) {
+                    iconClass = socialIconMap['vk'];
+                } else if (social.includes('steamcommunity.com')) {
+                    iconClass = socialIconMap['steam'];
+                } else if (social.includes('tumblr.com')) {
+                    iconClass = socialIconMap['tumblr'];
+                } else if (social.includes('threads.net')) {
+                    iconClass = socialIconMap['threads'];
+                } else if (social.includes('patreon.com')) {
+                    iconClass = socialIconMap['patreon'];
+                } else if (social.includes('twitch.tv')) {
+                    iconClass = socialIconMap['twitch'];
+                } else if (social.includes('mixer.com')) {
+                    iconClass = socialIconMap['mixer'];
+                } else if (social.includes('mastodon.social')) {
+                    iconClass = socialIconMap['mastodon'];
+                } else if (social.includes('mailchimp.com')) {
+                    iconClass = socialIconMap['mailchimp'];
                 } else if (social.includes('@')) {
                     iconClass = socialIconMap['email'];
                     url = `mailto:${social}`;

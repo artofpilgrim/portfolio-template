@@ -51,6 +51,7 @@ h2 {
   user-select: none;
 }
 
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -107,5 +108,3 @@ h2 {
   width: 100%;
   margin-top: 0; /* No margin at the top */
 }
-
-

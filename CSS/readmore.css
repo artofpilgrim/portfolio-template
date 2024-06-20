@@ -1,0 +1,20 @@
+#toggle-description {
+    display: inline-block;
+    color: grey;
+    background-color: #222222;
+    padding: 2px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    transition: color 0.3s;
+    opacity: 0.5;
+  }
+  
+  #toggle-description:hover {
+    opacity: 1;
+    color: #f5ba13;
+    background-color: #272727;
+  }
+  

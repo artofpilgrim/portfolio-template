@@ -4,7 +4,7 @@ Materials: 3 (Mag & Barrel/Frame/Receiver)
 
 Texture Size: 4096x4096
 
-Texel Density: 90 px/in
+Texel Density: 120 ppi
 
 Workflow: PBR Metal/Gloss (This is using a specific Unity shader that uses gloss instead of roughness)
 

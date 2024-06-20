@@ -4,7 +4,7 @@ Materials: 4 (This is including existing in-game materials in a 4-way blender sh
 
 Texture Size: 1024x1024
 
-Texel Density: 512 px/in
+Texel Density: 120 ppi
 
 Workflow: PBR Spec/Gloss
 

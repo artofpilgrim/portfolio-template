@@ -15,25 +15,29 @@ function createProductionCard(title, company, time, thumbnail, description) {
 
     const companyElem = document.createElement("p");
     companyElem.textContent = company;
-    companyElem.style.fontWeight = "bold";
+    companyElem.style.fontWeight = "bold"; // Inline style for bold text
 
     const timeElem = document.createElement("p");
     timeElem.textContent = time;
-    timeElem.style.fontStyle = "italic";
-
-    const descElem = document.createElement("p");
-    descElem.textContent = description;
+    timeElem.style.fontStyle = "italic"; // Inline style for italic text
 
     // Append text elements to the detailsDiv
     detailsDiv.appendChild(titleElem);
     detailsDiv.appendChild(companyElem);
     detailsDiv.appendChild(timeElem);
 
+    // Create a new div for the description
+    const descDiv = document.createElement("div");
+    descDiv.classList.add("production-description");
+    const descElem = document.createElement("p");
+    descElem.textContent = description;
+    descDiv.appendChild(descElem);
+
     // Create a container for the details and description
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("production-content");
     contentContainer.appendChild(detailsDiv);
-    contentContainer.appendChild(descElem);
+    contentContainer.appendChild(descDiv);
 
     // Append img and contentContainer to the main card
     card.appendChild(img);
@@ -43,25 +47,35 @@ function createProductionCard(title, company, time, thumbnail, description) {
 }
 
 // Fetch and append production cards on DOM content load
-document.addEventListener("DOMContentLoaded", () => {
-    fetch('../Config/productions.txt')
-        .then(response => response.text())
-        .then(text => {
-            const productions = text.split('---').map(prod => prod.trim()).filter(prod => prod);
-            const productionsContainer = document.querySelector(".productions-subpanels");
+document.addEventListener("DOMContentLoaded", async () => {
+    const productionsContainer = document.querySelector(".productions-subpanels");
+    if (!productionsContainer) {
+        console.error('Productions container not found');
+        return;
+    }
 
-            console.log("Processing productions...");
+    try {
+        const response = await fetch('../Config/productions.txt');
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        const text = await response.text();
+        const productions = text.split('---').map(prod => prod.trim()).filter(prod => prod);
 
-            productions.forEach((prod, index) => {
-                const lines = prod.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));
-                console.log(`Production ${index}:`, lines); // Debugging log
-                if (lines.length === 5) {
-                    const card = createProductionCard(lines[0], lines[1], lines[2], lines[3], lines[4]);
-                    productionsContainer.appendChild(card);
-                } else {
-                    console.error('Invalid production data format:', lines);
-                }
-            });
-        })
-        .catch(error => console.error('Failed to load productions:', error));
+        const fragment = document.createDocumentFragment();
+
+        productions.forEach((prod, index) => {
+            const lines = prod.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));
+            if (lines.length === 5) {
+                const card = createProductionCard(lines[0], lines[1], lines[2], lines[3], lines[4]);
+                fragment.appendChild(card);
+            } else {
+                console.error(`Invalid production data format at index ${index}:`, lines);
+            }
+        });
+
+        productionsContainer.appendChild(fragment);
+    } catch (error) {
+        console.error('Failed to load productions:', error);
+    }
 });

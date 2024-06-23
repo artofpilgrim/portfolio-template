@@ -14,7 +14,6 @@
     height: auto; /* Adjusts height based on content */
     max-height: 400px; /* Limits maximum height for consistency */
     margin-bottom: 20px; /* Space between each card */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds shadow for better depth */
     display: flex; /* Enables flexbox layout */
     align-items: flex-start; /* Aligns items to the start vertically */
 }
@@ -31,6 +30,10 @@
     display: flex;
     flex-direction: column; /* Stacks title, company, and time vertically */
     align-items: flex-start; /* Aligns items to the start */
+}
+
+.production-description {
+    margin-top: 10px; /* Add space between details and description */
 }
 
 .production-content {
@@ -58,6 +61,7 @@
 }
 
 .production-subpanel h2 {
+    font-size: 20px; /* Font size for the title */
     margin: 5px 0; /* Margins for spacing */
     color: #d7d7d7; /* Text color */
     text-align: left; /* Aligns text to the left */
@@ -69,10 +73,63 @@
     text-align: left; /* Aligns text to the left */
 }
 
-.production-subpanel h2 {
-    font-size: 20px; /* Font size for the title */
-}
-
 .production-subpanel p {
     font-size: 16px; /* Font size for the paragraphs */
 }
+
+@media (max-width: 600px) {
+    .production-subpanel {
+        width: 90%; /* Increase width to better fit mobile screens */
+        margin-bottom: 15px; /* Adjust margin for better spacing on mobile */
+        display: grid; /* Use grid layout */
+        grid-template-columns: auto 1fr; /* Two columns: one for image, one for details */
+        grid-template-rows: auto auto; /* Two rows: one for image/details, one for description */
+        gap: 10px; /* Space between grid items */
+        align-items: start; /* Align items to the start */
+        padding: 10px; /* Add padding to ensure content has space */
+        background-color: #121212; /* Background color */
+        border-radius: 5px; /* Border radius for rounded corners */
+    }
+
+    .production-subpanel img {
+        width: 100px; /* Adjust the image width for mobile */
+        height: auto; /* Maintain aspect ratio */
+        grid-column: 1; /* Image in the first column */
+        grid-row: 1; /* Image in the first row */
+        align-self: start; /* Align image to the start of the cell */
+    }
+
+    .production-details {
+        align-items: flex-start; /* Align text to the start */
+        text-align: left; /* Ensure text is aligned to the left */
+        grid-column: 2; /* Details in the second column */
+        grid-row: 1; /* Details in the first row */
+        margin-left: -15px;
+    }
+
+    .production-description {
+        align-items: flex-start; /* Align content to the start */
+        text-align: left; /* Ensure text is aligned to the left */
+        margin-top: 10px; /* Add space between details and description */
+        grid-column: 1 / 3; /* Description spans both columns */
+        grid-row: 2; /* Description in the second row */
+    }
+
+    .production-content {
+        display: contents; /* Allow direct child elements to follow the grid */
+    }
+
+    .productions-panel {
+        padding: 8px; /* Adjust padding for mobile */
+        margin-bottom: 15px; /* Adjust margin for better spacing on mobile */
+    }
+
+    .production-subpanel h2 {
+        font-size: 18px; /* Adjust font size for mobile */
+    }
+
+    .production-subpanel p {
+        font-size: 14px; /* Adjust font size for mobile */
+    }
+}
+

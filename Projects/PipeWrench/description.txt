@@ -1,9 +1,0 @@
-Pipe Wrench Tool - Rust
----
-Dropping this here! Rust pipe wrench tool for an upcoming update. I've included a couple of tutorials surrounding the tool that i hope could prove useful to whomever sees this! Hope all your art ventures are going well this year <3 thanks for all the kind messages and encouragements that past few years, i really do appreciate all of you.
----
-Blender, Zbrush, Marmoset Toolbag, Unity
----
-https://cdna.artstation.com/p/assets/images/images/058/205/302/20230113080336/smaller_square/thomas-butters-pipewrenchrender.jpg?1673618617
----
-pipewrench.html

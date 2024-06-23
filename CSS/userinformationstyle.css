@@ -24,8 +24,10 @@
 }
 
 .user-info-panel h1 {
+  font-size: 20px;
   font-weight: 400;
   margin-bottom: 5px;
+  color: #edb049;
 }
 
 .profile-pic {
@@ -43,16 +45,17 @@
   transition: opacity 0.5s;
   margin-bottom: 10px;
   margin-top: 5px;
+  color: grey !important; 
 }
 
 .social-icons a {
-  color: #272727;
+  color: #272727 !important;
   font-size: 24px;
   transition: color 0.3s;
 }
 
 .social-icons a:hover {
-  color: #edb049;
+  color: #edb049 !important;;
 }
 
 .user-location-container {
@@ -64,7 +67,7 @@
 
 .material-symbols-outlined {
   font-size: 1.2em; /* Adjust the size of the icon */
-  color: grey;
+  color: grey !important; 
 }
 
 .user-location-container h2 {

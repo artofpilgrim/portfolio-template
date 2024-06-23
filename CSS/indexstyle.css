@@ -5,16 +5,16 @@
   box-sizing: border-box;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for Chrome, Safari, and Opera */
 html::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge, and Firefox */
+/* Hide scrollbar for IE, Edge */
 html {
   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
+
 
 /* Body Styling */
 html, body {
@@ -39,6 +39,7 @@ h1 {
   margin: 0;
   margin-bottom: 5px;
   color: #d7d7d7;
+  -webkit-user-select: none; /* Safari */
   user-select: none;
 }
 
@@ -48,9 +49,9 @@ h2 {
   color: grey;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
+  -webkit-user-select: none; /* Safari */
   user-select: none;
 }
-
 
 .main-container {
   display: flex;
@@ -73,7 +74,6 @@ h2 {
   border-bottom: 1px solid #2e2e2e;
 }
 
-
 .navigation-buttons {
   display: flex;
   gap: 0.5rem;
@@ -82,15 +82,17 @@ h2 {
 }
 
 .nav-button {
-  padding: 10px 20px;
+  background-color: inherit;
   border: none;
-  background-color: #121212;
-  color: darkgray;
+  color: grey;
   font-family: 'Poppins', sans-serif;
-  font-size: 12px;
   text-decoration: none;
-  border-radius: 5px 5px 0 0;
-  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+  border-radius: .9em .9em 0 0;
+  transition: ease 0.5s;
 }
 
 .nav-button.active, .nav-button:hover {
@@ -107,4 +109,49 @@ h2 {
   border-radius: 5px;
   width: 100%;
   margin-top: 0; /* No margin at the top */
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px; /* Adjust the base font size for better readability on small screens */
+  }
+  
+  h1 {
+      font-size: 18px; /* Adjust font size for mobile */
+      text-align: center; /* Center align text for better readability on mobile */
+  }
+
+  h2 {
+      font-size: 14px; /* Adjust font size for mobile */
+      text-align: center; /* Center align text for better readability on mobile */
+  }
+
+  .main-container {
+      overflow-y: auto; /* Ensure main container scrolls if necessary */
+      padding-top: 5px;/* Add padding for better spacing on mobile */
+  }
+
+  .top-container {
+      padding-top: 5px; /* Adjust padding for mobile */
+      border-bottom: 1px solid #2e2e2e;
+  }
+
+  .navigation-buttons {
+    flex-direction: row; /* Stack navigation buttons vertically on mobile */
+    gap: 0.5rem; /* Adjust gap for better spacing on mobile */
+}
+
+.nav-button {
+    font-size: 12px; /* Adjust font size for navigation buttons on mobile */
+    padding: 8px; /* Reduce padding for better fit on mobile */
+    margin-right: 0; /* Remove margin for better fit on mobile */
+    border-radius: .5em .5em 0 0; /* Adjust border radius for better look on mobile */
+}
+
+  .bottom-container {
+      background-color: #171717;
+      padding: 8px; /* Adjust padding for mobile */
+      border-radius: 5px; /* Maintain border radius for consistent look */
+      margin-top: 0; /* Add margin at the top for spacing */
+  }
 }

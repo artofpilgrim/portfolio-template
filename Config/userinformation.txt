@@ -1,9 +1,10 @@
-https://files.facepunch.com/tom/1b/YourPic.png
-John Doe
-Lead Duder @ Dude Studios
-North Wales, United Kingdom
-https://twitter.com/yourprofile
-https://www.youtube.com/channel/UCK8f3vANzTpaVaacgpnv5lw
-https://linkedin.com/in/yourprofile
+https://yourprofilepic.png
+Your Name
+Your Role @ Company
+Your Location
+https://x.com/ArtOfPilgrim
+http://youtube.com/c/ArtofPilgrim
+https://www.linkedin.com/in/thomasrwbutters/
 https://www.artstation.com/art_of_pilgrim
-your.email@example.com
+https://discord.com/invite/WCnQ5bQa6Q
+youremail@email.com

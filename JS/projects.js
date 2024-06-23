@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (description.length > 420) {
                 const shortDescription = description.substring(0, 420);
                 descriptionContainer.innerHTML = `${shortDescription}<span id="ellipsis">...</span><span id="full-description" style="display: none;">${description.substring(420)}</span><br><span id="toggle-description">Read More</span>`;
-                
+
                 const toggleDescription = document.getElementById('toggle-description');
                 const fullDescription = document.getElementById('full-description');
                 const ellipsis = document.getElementById('ellipsis');
-                
+
                 toggleDescription.addEventListener('click', () => {
                     const isFullVisible = fullDescription.style.display === 'inline';
                     fullDescription.style.display = isFullVisible ? 'none' : 'inline';
@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const mediaContainer = document.getElementById('project-media');
             const lines = text.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));
 
+            const fragment = document.createDocumentFragment();
+
             let i = 0;
             while (i < lines.length) {
                 let description = '';
@@ -82,9 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const mediaElement = createMediaElement(urls, description);
-                if (mediaElement) mediaContainer.appendChild(mediaElement);
+                if (mediaElement) fragment.appendChild(mediaElement);
                 i += 1;
             }
+
+            mediaContainer.appendChild(fragment);
         } catch (error) {
             console.error('Error loading project media:', error);
         }
@@ -98,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.src = url;
         iframe.allow = 'autoplay; fullscreen';
         iframe.setAttribute('allowfullscreen', ''); // Ensure allowfullscreen is set correctly
+        iframe.title = 'Marmoset Viewer';
 
         mediaElement.appendChild(iframe);
         return mediaElement;
@@ -138,12 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const imgElement1 = document.createElement('img');
         imgElement1.src = urls[0];
         imgElement1.className = 'image-1';
+        imgElement1.alt = 'Primary image';
         imgContainer.appendChild(imgElement1);
 
         if (urls[1]) {
             const imgElement2 = document.createElement('img');
             imgElement2.src = urls[1];
             imgElement2.className = 'image-2';
+            imgElement2.alt = 'Secondary image';
             imgContainer.appendChild(imgElement2);
 
             const sliderContainer = document.createElement('div');
@@ -158,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.max = '100';
             slider.value = '50';
             slider.className = 'image-slider';
+            slider.setAttribute('aria-label', 'Image comparison slider');
             slider.addEventListener('input', () => {
                 const value = slider.value;
                 imgElement2.style.clipPath = `inset(0 0 0 ${value}%)`;
@@ -186,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         videoElement.autoplay = true;
         videoElement.loop = true;
         videoElement.muted = true;
+        videoElement.title = 'Video content';
 
         mediaElement.appendChild(videoElement);
         return mediaElement;
@@ -199,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.src = `https://www.youtube.com/embed/${new URL(url).searchParams.get('v')}`;
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
         iframe.allowFullscreen = true;
+        iframe.title = 'YouTube video';
 
         mediaElement.appendChild(iframe);
         return mediaElement;
@@ -213,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iframe.src = `https://sketchfab.com/models/${sketchfabId}/embed`;
         iframe.allow = 'autoplay; fullscreen; vr';
         iframe.allowFullscreen = true;
+        iframe.title = 'Sketchfab model';
 
         mediaElement.appendChild(iframe);
         return mediaElement;
@@ -355,6 +366,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     backToTopButton.addEventListener('click', () => {
         mediaContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            window.location.href = 'index.html';
+        } else if (event.key === 'ArrowLeft') {
+            navigateProjects(-1);
+        } else if (event.key === 'ArrowRight') {
+            navigateProjects(1);
+        } else if (event.key === 'ArrowUp') {
+            mediaContainer.scrollBy({ top: -200, behavior: 'smooth' });
+        } else if (event.key === 'ArrowDown') {
+            mediaContainer.scrollBy({ top: 200, behavior: 'smooth' });
+        }
     });
 
     // Initialize the app

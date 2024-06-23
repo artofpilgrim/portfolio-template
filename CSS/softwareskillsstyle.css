@@ -8,6 +8,7 @@
     align-items: flex-start; /* Align items to the start (left) */
     text-align: left; /* Align text to the left */
     margin-bottom: 20px;
+    -webkit-user-select: none; /* Safari */
     user-select: none;
 }
 

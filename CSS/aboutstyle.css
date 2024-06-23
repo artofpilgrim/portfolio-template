@@ -26,10 +26,9 @@ html::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge, and Firefox */
+/* Hide scrollbar for IE and Edge */
 html {
     -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
 }
 
 body {
@@ -41,6 +40,7 @@ h1 {
     margin: 0;
     margin-bottom: 5px;
     color: white;
+    -webkit-user-select: none; /* Safari */
     user-select: none;
     font-weight: 400;
     text-align: left; /* Ensure all h1 elements are aligned to the left */
@@ -52,6 +52,7 @@ h2 {
     color: grey;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    -webkit-user-select: none; /* Safari */
     user-select: none;
 }
 
@@ -101,7 +102,6 @@ p {
 
 .summary-panel p {
     text-align: justify;
-    padding: 5px;
 }
 
 .navigation-buttons {
@@ -112,18 +112,73 @@ p {
 }
 
 .nav-button {
-    padding: 10px 20px;
+    background-color: inherit;
     border: none;
-    background-color: #121212;
-    color: darkgray;
+    color: grey;
     font-family: 'Poppins', sans-serif;
-    font-size: 12px;
     text-decoration: none;
-    border-radius: 5px 5px 0 0;
-    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    border-radius: .9em .9em 0 0;
+    transition: ease 0.5s;
 }
 
 .nav-button.active, .nav-button:hover {
     background-color: #171717;
     color: #f5ba13;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Adjust the base font size for better readability on small screens */
+    }
+
+    h1 {
+        font-size: 18px; /* Smaller font size for headings on mobile */
+        text-align: center; /* Center align headings for better presentation on mobile */
+    }
+
+    h2 {
+        font-size: 14px; /* Smaller font size for subheadings on mobile */
+        text-align: center; /* Center align subheadings for better presentation on mobile */
+    }
+
+    .top-container {
+        padding-top: 10px;
+        border-bottom: 1px solid #2e2e2e;
+    }
+
+    .bottom-container {
+        padding: 10px; /* Reduce padding for better fit on mobile */
+        gap: 5px; /* Reduce gap for better fit on mobile */
+    }
+
+    .horizontal-container {
+        width: 90%; /* Increase width to better fit mobile screens */
+        margin: 0 5%; /* Center the container */
+    }
+
+    .panel-title {
+        font-size: 20px; /* Adjust font size for panel titles on mobile */
+        text-align: center; /* Center align panel titles for better presentation on mobile */
+    }
+
+    p {
+        font-size: 14px; /* Adjust font size for paragraphs on mobile */
+        line-height: 1.6; /* Increase line height for better readability on mobile */
+    }
+
+    .navigation-buttons {
+        flex-direction: row; /* Stack navigation buttons vertically on mobile */
+        gap: 0.5rem; /* Adjust gap for better spacing on mobile */
+    }
+
+    .nav-button {
+        font-size: 12px; /* Adjust font size for navigation buttons on mobile */
+        padding: 8px; /* Reduce padding for better fit on mobile */
+        margin-right: 0; /* Remove margin for better fit on mobile */
+        border-radius: .5em .5em 0 0; /* Adjust border radius for better look on mobile */
+    }
 }

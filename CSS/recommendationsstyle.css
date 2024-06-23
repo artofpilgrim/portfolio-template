@@ -1,22 +1,50 @@
 .recommendation-content {
-    flex-grow: 1; /* Takes up all available space */
-    position: relative; /* Context for absolute positioning of recommendations */
-    width: 100%; /* Full width of its parent */
-    min-height: 350px; /* Minimum height to ensure space for content */
-    overflow: hidden; /* Keeps all recommendations within the div */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    overflow: hidden;
+    padding-bottom: 40px; /* Add space for the dots */
 }
 
 .recommendation {
     width: 100%;
-    display: none; /* Hide all initially */
+    display: none;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.recommendation.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.recommendation-header {
+    display: flex;
     align-items: center;
-    text-align: center;
-    transition: opacity 0.5s;
-    position: absolute; /* Allow absolute positioning for sliding effect */
-    top: 0; /* Align at the top inside the relative container */
-    left: 0; /* Align to the left */
+    margin-bottom: 10px;
+}
+
+.recommendation-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 0.5em;
+    margin-right: 15px;
+}
+
+.recommendation-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .recommendations-panel {
@@ -26,33 +54,31 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the start (left) */
-    text-align: left; /* Align text to the left */
+    align-items: flex-start;
+    text-align: left;
     margin-bottom: 20px;
-}
-
-.recommendation.active {
-    display: flex; /* Only display the active recommendation */
-    opacity: 1;
-    visibility: visible;
 }
 
 .recommendation h2 {
     font-size: 20px;
-    margin: 5px 0;
-    color: #f5ba13;
+    margin: 0;
+    color: #edb049;
 }
 
 .recommendation h3 {
     font-size: 18px;
-    margin: 5px 0;
-    color: #cccccc;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    color: grey;
 }
 
 .recommendation-date {
     font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     margin: 5px 0;
-    color: #999999;
+    color: #444444;
 }
 
 .recommendation-quote {
@@ -64,7 +90,7 @@
 
 .recommendation-dots {
     position: absolute;
-    bottom: 10px; /* Position dots at the bottom */
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -82,4 +108,131 @@
 
 .dot.active {
     background-color: #f5ba13;
+}
+
+@media (max-width: 600px) {
+    .recommendation-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 450px; /* Adjust the minimum height for mobile */
+        position: relative; /* Add relative positioning */
+        padding-bottom: 60px; /* Ensure enough space for dots */
+    }
+
+    .recommendation {
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        flex-grow: 1;
+        margin-bottom: 60px; /* Add margin to create space for dots */
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .recommendation-enter-left {
+        animation: slideInFromLeft 0.5s forwards;
+    }
+
+    .recommendation-exit-left {
+        animation: slideOutToLeft 0.5s forwards;
+    }
+
+    .recommendation-enter-right {
+        animation: slideInFromRight 0.5s forwards;
+    }
+
+    .recommendation-exit-right {
+        animation: slideOutToRight 0.5s forwards;
+    }
+
+    @keyframes slideInFromLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideOutToLeft {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes slideInFromRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideOutToRight {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
+
+    .recommendation-avatar {
+        width: 80px; /* Smaller avatar size for mobile */
+        height: 80px; /* Smaller avatar size for mobile */
+        margin-right: 10px; /* Adjust margin for better spacing on mobile */
+        margin-left: 10px;
+    }
+
+    .recommendation h2 {
+        font-size: 18px; /* Adjust font size for mobile */
+        display: flex;
+        align-items: center;
+    }
+
+    .recommendation h3 {
+        font-size: 16px; /* Adjust font size for mobile */
+    }
+
+    .recommendation-date {
+        font-size: 12px; /* Adjust font size for mobile */
+        margin-bottom: -10px;
+    }
+
+    .recommendation-quote {
+        font-size: 14px; /* Adjust font size for mobile */        
+    }
+
+    .recommendations-panel {
+        padding: 8px; /* Adjust padding for mobile */
+        margin-bottom: 15px; /* Adjust margin for better spacing on mobile */
+    }
+
+    .recommendation-dots {
+        display: flex;
+        justify-content: center; /* Center the dots */
+        position: absolute; /* Make dots positioned absolutely */
+        bottom: 10px; /* Place dots at the bottom */
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 7px; /* Adjust gap for better spacing on mobile */
+    }
+
+    .dot {
+        height: 10px; /* Adjust dot size for mobile */
+        width: 10px; /* Adjust dot size for mobile */
+    }
 }

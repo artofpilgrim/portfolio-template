@@ -152,7 +152,7 @@ h3 {
 
 /* Media Content Styling */
 #project-media {
-  width: 100%;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,8 +160,12 @@ h3 {
 
 #project-media img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
+  object-fit: contain;
+  margin: auto;
 }
 
 #project-media video {
@@ -199,10 +203,21 @@ hr {
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
+    overflow-y: auto; /* Enable vertical scrolling for the container */
   }
 
-  .media-container, .info-container {
+  .media-container,
+  .info-container {
     width: 100%;
-    height: 100vh;
+    height: auto; /* Let the height be determined by the content */
+    overflow: visible; /* Remove individual scrolling */
+  }
+
+  .media-container {
+    flex: 1;
+  }
+
+  .info-container {
+    flex: 1;
   }
 }

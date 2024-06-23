@@ -10,6 +10,7 @@
   font-size: 14px;
   margin-right: 5px;
   font-weight: 400;
+  -webkit-user-select: none; /* Safari */
   user-select: none;
 }
 

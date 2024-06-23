@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>John Doe Portfolio</title>
-    <link rel="stylesheet" href="../CSS/indexstyle.css" />
-    <link rel="stylesheet" href="../CSS/thumbnailstyle.css" />
-    <link rel="stylesheet" href="../CSS/userinformationstyle.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Art of Pilgrim</title>
+    <link rel="stylesheet" href="../CSS/indexstyle.css?v=1.0" />
+    <link rel="stylesheet" href="../CSS/thumbnailstyle.css?v=1.0" />
+    <link rel="stylesheet" href="../CSS/userinformationstyle.css?v=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css?v=1.0" />
+    <link rel="icon" href="../../Resources/favicon/pilfav.png" type="image/png"/>
 </head>
 <body>
     <div class="main-container">
@@ -26,10 +27,14 @@
             <div class="thumbnail-container" id="thumbnail-container"></div>
         </div>
     </div>
+    <div class="resize-buttons">
+        <button id="plus-button" class="resize-button">+</button>
+        <button id="minus-button" class="resize-button">-</button>
+    </div>
     <!-- Link to the external JavaScript files -->
-    <script src="../JS/userinformation.js"></script>
-    <script src="../JS/projects.js"></script>
-    <script src="../JS/index.js"></script>
+    <script src="../JS/userinformation.js?v=1.0"></script>
+    <script src="../JS/index.js?v=1.0"></script>
+    <script src="../JS/resize-thumbnails.js"></script>
     <script>
         // JavaScript to add 'active' class to the current page's navigation button
         document.addEventListener("DOMContentLoaded", function() {

@@ -18,6 +18,9 @@ function addUserInformation() {
             // Get the container where the user info should be added
             const container = document.querySelector('.top-container'); // Select the specific container
 
+            // Create a document fragment for better performance
+            const fragment = document.createDocumentFragment();
+
             // Create the user info panel
             const userInfoPanel = document.createElement("div");
             userInfoPanel.className = "user-info-panel";
@@ -31,7 +34,7 @@ function addUserInformation() {
 
             // Create and append the user name as a link
             const userNameLink = document.createElement("a");
-            userNameLink.href = "../../HTML/index.html";
+            userNameLink.href = "../../index.html";
             userNameLink.className = "user-name-link";
 
             const userName = document.createElement("h1");
@@ -67,29 +70,29 @@ function addUserInformation() {
 
             // Define the mapping of keywords to icon classes
             const socialIconMap = {
-                'twitter': "fa-brands fa-x-twitter",
-                'email': "fas fa-envelope",
-                'facebook': "fa-brands fa-square-facebook",
-                'discord': "fa-brands fa-discord",
-                'instagram': "fa-brands fa-instagram",
-                'youtube': "fa-brands fa-youtube",
-                'linkedin': "fab fa-linkedin",
-                'artstation': "fa-brands fa-artstation",
-                'github': "fab fa-github",
-                'wordpress': "fab fa-wordpress",
-                'vimeo': "fab fa-vimeo",
-                'behance': "fab fa-behance",
-                'playstation': "fab fa-playstation",
-                'xbox': "fab fa-xbox",
-                'vk': "fab fa-vk",
-                'steam': "fab fa-steam",
-                'tumblr': "fab fa-tumblr",
-                'threads': "fab fa-threads",
-                'patreon': "fab fa-patreon",
-                'twitch': "fab fa-twitch",
-                'mixer': "fab fa-mixer",
-                'mastodon': "fab fa-mastodon",
-                'mailchimp': "fab fa-mailchimp"
+                'x.com': "fa-brands fa-x-twitter",
+                'facebook.com': "fa-brands fa-square-facebook",
+                'discord.com': "fa-brands fa-discord",
+                'instagram.com': "fa-brands fa-instagram",
+                'youtube.com': "fa-brands fa-youtube",
+                'linkedin.com': "fab fa-linkedin",
+                'artstation.com': "fa-brands fa-artstation",
+                'github.com': "fab fa-github",
+                'wordpress.com': "fab fa-wordpress",
+                'vimeo.com': "fab fa-vimeo",
+                'behance.net': "fab fa-behance",
+                'playstation.com': "fab fa-playstation",
+                'xbox.com': "fab fa-xbox",
+                'vk.com': "fab fa-vk",
+                'steamcommunity.com': "fab fa-steam",
+                'tumblr.com': "fab fa-tumblr",
+                'threads.net': "fab fa-threads",
+                'patreon.com': "fab fa-patreon",
+                'twitch.tv': "fab fa-twitch",
+                'mixer.com': "fab fa-mixer",
+                'mastodon.social': "fab fa-mastodon",
+                'mailchimp.com': "fab fa-mailchimp",
+                'email': "fas fa-envelope"
             };
 
             // Adding social links based on the detected type
@@ -98,52 +101,9 @@ function addUserInformation() {
                 let url = social;
 
                 // Detect the type of social link
-                if (social.includes('twitter.com')) {
-                    iconClass = socialIconMap['twitter'];
-                } else if (social.includes('facebook.com')) {
-                    iconClass = socialIconMap['facebook'];
-                } else if (social.includes('discord.com')) {
-                    iconClass = socialIconMap['discord'];
-                } else if (social.includes('instagram.com')) {
-                    iconClass = socialIconMap['instagram'];
-                } else if (social.includes('youtube.com')) {
-                    iconClass = socialIconMap['youtube'];
-                } else if (social.includes('linkedin.com')) {
-                    iconClass = socialIconMap['linkedin'];
-                } else if (social.includes('artstation.com')) {
-                    iconClass = socialIconMap['artstation'];
-                } else if (social.includes('github.com')) {
-                    iconClass = socialIconMap['github'];
-                } else if (social.includes('wordpress.com')) {
-                    iconClass = socialIconMap['wordpress'];
-                } else if (social.includes('vimeo.com')) {
-                    iconClass = socialIconMap['vimeo'];
-                } else if (social.includes('behance.net')) {
-                    iconClass = socialIconMap['behance'];
-                } else if (social.includes('playstation.com')) {
-                    iconClass = socialIconMap['playstation'];
-                } else if (social.includes('xbox.com')) {
-                    iconClass = socialIconMap['xbox'];
-                } else if (social.includes('vk.com')) {
-                    iconClass = socialIconMap['vk'];
-                } else if (social.includes('steamcommunity.com')) {
-                    iconClass = socialIconMap['steam'];
-                } else if (social.includes('tumblr.com')) {
-                    iconClass = socialIconMap['tumblr'];
-                } else if (social.includes('threads.net')) {
-                    iconClass = socialIconMap['threads'];
-                } else if (social.includes('patreon.com')) {
-                    iconClass = socialIconMap['patreon'];
-                } else if (social.includes('twitch.tv')) {
-                    iconClass = socialIconMap['twitch'];
-                } else if (social.includes('mixer.com')) {
-                    iconClass = socialIconMap['mixer'];
-                } else if (social.includes('mastodon.social')) {
-                    iconClass = socialIconMap['mastodon'];
-                } else if (social.includes('mailchimp.com')) {
-                    iconClass = socialIconMap['mailchimp'];
-                } else if (social.includes('@')) {
-                    iconClass = socialIconMap['email'];
+                const socialType = Object.keys(socialIconMap).find(key => social.includes(key)) || 'email';
+                iconClass = socialIconMap[socialType];
+                if (socialType === 'email') {
                     url = `mailto:${social}`;
                 }
 
@@ -158,14 +118,14 @@ function addUserInformation() {
                 }
             });
 
-            // Append the user info panel to the top-container element
-            container.appendChild(userInfoPanel);
+            // Append the user info panel to the fragment
+            fragment.appendChild(userInfoPanel);
+
+            // Append the fragment to the container
+            container.appendChild(fragment);
         })
         .catch(error => console.error('Error loading user information:', error));
 }
 
 // Call the function when the document is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOMContentLoaded event fired");
-    addUserInformation();
-});
+document.addEventListener("DOMContentLoaded", addUserInformation);

@@ -1,9 +1,0 @@
-Hatchet & Pickaxe Skins - Rust
----
-These are 2 of the tool skins for the new Rust Lumberjack DLC pack - the Hatchet and Pickaxe skins! Really enjoyed working on these from the concept by Paul Bradley - I have recorded (most of) the process but haven't had time to put it all together so i'll probably post the link to my twitter. Hope you're enjoying the new skins!
----
-Blender, Zbrush, Substance Painter, Marmoset Toolbag, Unity
----
-https://files.facepunch.com/tombutters/1b2511b1/19201713RedpandaSpeedy.png
----
-hatchetpickaxe.html

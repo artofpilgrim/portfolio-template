@@ -1,50 +1,145 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetch('../Config/recommendations.txt')
-      .then(response => response.text())
-      .then(text => {
-          const recommendations = text.split('---').map(rec => rec.trim()).filter(rec => rec);
-          const recommendationContent = document.querySelector('.recommendation-content');
-          const dotsContainer = document.getElementById('recommendation-dots');
+document.addEventListener("DOMContentLoaded", async () => {
+    const recommendationContent = document.querySelector('.recommendation-content');
+    const dotsContainer = document.getElementById('recommendation-dots');
 
-          console.log("Adding recommendations and dots...");
+    if (!recommendationContent || !dotsContainer) {
+        console.error('Recommendation content or dots container not found');
+        return;
+    }
 
-          recommendations.forEach((rec, index) => {
-              const lines = rec.split('\n').map(line => line.trim()).filter(line => line);
-              const recommendation = document.createElement("div");
-              recommendation.className = "recommendation";
-              if (index === 0) recommendation.classList.add("active");
-              recommendation.innerHTML = `
-                  <h2>${lines[0]}</h2>
-                  <h3>${lines[1]}</h3>
-                  <p class="recommendation-date">${lines[2]}</p>
-                  <p class="recommendation-quote">"${lines[3]}"</p>
-              `;
+    try {
+        const response = await fetch('../Config/recommendations.txt');
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        const text = await response.text();
+        const recommendations = text.split('---').map(rec => rec.trim()).filter(rec => rec);
 
-              recommendationContent.appendChild(recommendation);
+        const recommendationFragment = document.createDocumentFragment();
+        const dotsFragment = document.createDocumentFragment();
 
-              const dot = document.createElement("span");
-              dot.classList.add("dot");
-              if (index === 0) dot.classList.add("active");
-              dot.dataset.index = index;
-              dotsContainer.appendChild(dot);
+        recommendations.forEach((rec, index) => {
+            const lines = rec.split('\n').map(line => line.trim()).filter(line => line);
+            const hasAvatar = lines[1].startsWith('http');
+            const name = lines[0];
+            const avatar = hasAvatar ? lines[1] : '';
+            const position = hasAvatar ? lines[2] : lines[1];
+            const date = hasAvatar ? lines[3] : lines[2];
+            const quote = hasAvatar ? lines[4] : lines[3];
 
-              dot.addEventListener("click", () => showRecommendation(index));
-          });
+            const recommendation = document.createElement("div");
+            recommendation.className = "recommendation";
+            if (index === 0) recommendation.classList.add("active");
 
-          const recommendationsElements = document.querySelectorAll(".recommendation");
-          const dots = document.querySelectorAll(".dot");
+            recommendation.innerHTML = `
+                <div class="recommendation-header">
+                    ${avatar ? `<img src="${avatar}" alt="${name}" class="recommendation-avatar">` : ''}
+                    <div class="recommendation-details">
+                        <h2>${name}</h2>
+                        <h3>${position}</h3>
+                        <p class="recommendation-date">${date}</p>
+                    </div>
+                </div>
+                <p class="recommendation-quote">"${quote}"</p>
+            `;
 
-          console.log(`Recommendations count: ${recommendationsElements.length}`);
-          console.log(`Dots count: ${dots.length}`);
+            recommendationFragment.appendChild(recommendation);
 
-          function showRecommendation(index) {
-              recommendationsElements.forEach((rec, i) => {
-                  rec.classList.toggle("active", i === index);
-              });
-              dots.forEach((dot, i) => {
-                  dot.classList.toggle("active", i === index);
-              });
-          }
-      })
-      .catch(error => console.error('Failed to load recommendations:', error));
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (index === 0) dot.classList.add("active");
+            dot.dataset.index = index;
+            dotsFragment.appendChild(dot);
+        });
+
+        recommendationContent.appendChild(recommendationFragment);
+        dotsContainer.appendChild(dotsFragment);
+
+        const recommendationsElements = document.querySelectorAll(".recommendation");
+        const dots = document.querySelectorAll(".dot");
+        let currentIndex = 0;
+
+        function showRecommendation(index, direction) {
+            const current = recommendationsElements[currentIndex];
+            const next = recommendationsElements[index];
+
+            if (direction === 'left') {
+                current.classList.add('recommendation-exit-left');
+                next.classList.add('recommendation-enter-right');
+            } else if (direction === 'right') {
+                current.classList.add('recommendation-exit-right');
+                next.classList.add('recommendation-enter-left');
+            }
+
+            setTimeout(() => {
+                current.classList.remove('active', 'recommendation-exit-left', 'recommendation-exit-right');
+                next.classList.add('active');
+                next.classList.remove('recommendation-enter-left', 'recommendation-enter-right');
+                currentIndex = index;
+            }, 500); // Match the CSS transition duration
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === index);
+            });
+        }
+
+        dotsContainer.addEventListener("click", (event) => {
+            if (event.target.classList.contains('dot')) {
+                const index = parseInt(event.target.dataset.index, 10);
+                if (index > currentIndex) {
+                    showRecommendation(index, 'left');
+                } else if (index < currentIndex) {
+                    showRecommendation(index, 'right');
+                }
+            }
+        });
+
+        // Swipe detection
+        let startX;
+        let isSwiping = false;
+
+        recommendationContent.addEventListener('touchstart', (event) => {
+            startX = event.touches[0].clientX;
+            isSwiping = true;
+        });
+
+        recommendationContent.addEventListener('touchmove', (event) => {
+            if (!isSwiping) return;
+            const moveX = event.touches[0].clientX;
+            const diffX = startX - moveX;
+
+            if (Math.abs(diffX) > 50) {
+                let newIndex;
+                if (diffX > 0) {
+                    // Swiped left
+                    newIndex = (currentIndex + 1) % recommendations.length;
+                    showRecommendation(newIndex, 'left');
+                } else {
+                    // Swiped right
+                    newIndex = (currentIndex - 1 + recommendations.length) % recommendations.length;
+                    showRecommendation(newIndex, 'right');
+                }
+                isSwiping = false;
+            }
+        });
+
+        recommendationContent.addEventListener('touchend', () => {
+            isSwiping = false;
+        });
+
+        // Adjust height to ensure dots are always visible
+        function adjustHeight() {
+            const activeRecommendation = document.querySelector('.recommendation.active');
+            if (activeRecommendation) {
+                const activeHeight = activeRecommendation.getBoundingClientRect().height;
+                recommendationContent.style.minHeight = `${activeHeight + 60}px`; // Add space for dots
+            }
+        }
+
+        window.addEventListener('resize', adjustHeight);
+        adjustHeight(); // Initial call to set height
+
+    } catch (error) {
+        console.error('Failed to load recommendations:', error);
+    }
 });

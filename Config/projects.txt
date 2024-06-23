@@ -1,6 +1,2 @@
-NorincoSKS
-PipeWrench
-M24Grenade
-Caboose
-Prototype17
-HatchetPickaxe
+Example Project
+BigMegaGunExample

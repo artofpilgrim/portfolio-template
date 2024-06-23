@@ -1,27 +1,44 @@
 .nav-button {
-    background-color: #121212;
-    border: none;
-    border-radius: 0.1em;
-    color: white;
-    font-size: 24px;
-    padding: 10px;
-    cursor: pointer;
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    opacity: 0.2;
-    transition: opacity 0.3s;
+  background-color: #121212;
+  border: none;
+  border-radius: 0.1em;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.nav-button:hover {
+  opacity: 1;
+}
+
+#prev-project {
+  left: calc((100vw - 100%) / 2 + 10px); /* Adjust to the left within media-container */
+}
+
+#next-project {
+  right: calc((100vw - 60%) / 2 + 15px); /* Adjust to the right within media-container */
+}
+
+/* Responsive Design for Navigation Buttons */
+@media (max-width: 600px) {
+  .nav-button {
+      font-size: 18px; /* Smaller font size for mobile */
+      padding: 8px; /* Smaller padding for mobile */
+      opacity: 0.5;
   }
-  
-  .nav-button:hover {
-    opacity: 1;
-  }
-  
+
   #prev-project {
-    left: calc((100vw - 100%) / 2 + 10px); /* Adjust to the left within media-container */
+      left: 10px; /* Keep the button at the center */
   }
-  
+
   #next-project {
-    right: calc((100vw - 60%) / 2 + 10px); /* Adjust to the right within media-container */
+      right: 10px; /* Keep the button at the center */
   }
+}

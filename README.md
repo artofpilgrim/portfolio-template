@@ -1,7 +1,11 @@
 # Brief Intro
 Hey everyone! I wanted to make a super simple html/css/javascript portfolio website template that allowed the user more control over what is presented on their portfolio and for free, and so here we are. I've simplified the customisation so that you don't really ever have to touch any code at all. There are only two folders you'll need to touch are `Config` and `Projects`. Config contains all your information in the form of various .txt files which are all explained below, and Projects contain all your project folders! It's incredibly simple and takes about 2-4 minutes to set up a new project.
 
-The template is designed to work via [Github Pages]  or Firebase. It's entirely free. The only thing you should pay for is your domain name, which should be super cheap. As an example, I've set my own one up using the same process as below on Github Pages. https://artofpilgrim.github.io/ 
+The template is designed to work via [Github Pages](https://pages.github.com/) or [Firebase](https://firebase.google.com/). It's entirely free. The only thing you should pay for is your domain name, which should be super cheap. As an example, I've set my own one up using the same process as below on Github Pages. https://artofpilgrim.github.io/ 
+
+What i suggest you do is the simplest. Setup your own [github account](https://github.com/join) and download [github desktop](https://desktop.github.com/), if you haven't already and follow the Github Page Desktop instructions i've linked above. Download the files from either the green code button (look for Download Zip) or [download it directly here](https://github.com/artofpilgrim/portfolio-template/archive/refs/heads/main.zip). Move everything into the folder you made when you made your own repo and commit your changes and push them to main. 
+
+Whenever you make changes, and you're happy with them, just commit and push those changes to github. It's actually pretty satisfying!
 
 # Configuration
 Below you'll find explanations on how to properly customise your portfolio using the .txt files found in the `Config` folder. 

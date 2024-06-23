@@ -82,7 +82,7 @@ Again, it's pretty straightforward. I've added a bunch of template so you can ge
 Make sure to save the file once done editing.
 
 ## Defining Projects
-`Config/projects.txt` Contain a list of all your projects and adding more is really simple. When you create new Project folders, just copy the project folder name and populate the list, it's that simple. If you don't it won't show up on your landing page. This could be a good way to prepare a project for a later date or hide projects until you add the project folder name into the list.  
+`Config/projects.txt` Contain a list of all your projects and adding more is really simple. When you create new Project folders, just copy the project folder name and populate the list, it's that simple. If you don't it won't show up on your landing page then don't include the project name. This could be a good way to prepare a project for a later date or hide projects until you add the project folder name into the list.  
 - Example Project
 - BigMegaGunExample
 

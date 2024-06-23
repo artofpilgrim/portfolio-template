@@ -61,6 +61,6 @@ This is really simple. When you create new Project folders, just copy the projec
 - Example Project
 - BigMegaGunExample
 
-The order here defines where the thumbnails on the landing page get populated. So, order how you want.  
+The order here defines where the thumbnails on the landing page get populated. So, order how you want.
 
-
+# Adding New Project/Artwork

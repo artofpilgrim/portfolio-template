@@ -1,12 +1,17 @@
+# Brief Intro
+Hey everyone! I wanted to make a super simple html/css/javascript portfolio website template that allowed the user more control over what is presented on their portfolio and for free, and so here we are. I've simplified the customisation so that you don't really ever have to touch any code at all. There are only two folders you'll need to touch are `Config` and `Projects`. Config contains all your information in the form of various .txt files which are all explained below, and Projects contain all your project folders! It's incredibly simple and takes about 2-4 minutes to set up a new project.
+
+The template is designed to work via [Github Pages]  or Firebase. It's entirely free. The only thing you should pay for is your domain name, which should be super cheap. As an example, I've set my own one up using the same process as below on Github Pages. https://artofpilgrim.github.io/ 
+
 # Configuration
 Below you'll find explanations on how to properly customise your portfolio using the .txt files found in the `Config` folder. 
 
 ## User Information
-To define who you are, where you work, your country and what you look like. It's pretty darn simple to do. Just open `userinformation.txt` in the Config folder which can be found here `Config/userinformation.txt` and you will be greeted with the following: 
+`Config/userinformation.txt` contains all your information. Who you are, where you work, your country and what you look like. It's pretty darn simple. Just open userinformation.txt and you will be greeted with the following: 
 
 ![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/b335cdf4-af55-4dad-977f-ee288919a113)
 
-The order of the first 4 (avatar/name/role@company/location) need to remain the same for it to make sense. The social links below can be in whatever order you wish. I'd recommend sticking to 6 but you can have more if you please. There is support for 23 socials. Which are as follows:
+Replace the template text with your information. The order of the first 4 (avatar/name/role@company/location) need to remain the same for it to make sense and styling. The social links below can be in whatever order you wish. I'd recommend sticking to 6 max for styling purposes but you can have more if you please but it might look odd. There is support for 23 socials in total, which are as follows:
 - x/twitter
 - facebook
 - discord
@@ -31,8 +36,8 @@ The order of the first 4 (avatar/name/role@company/location) need to remain the 
 - mailchimp
 - email
 
-The user information is universal, so wherever there is userinformation like your about page and project pages, it'll appear there.
-And that's it really. Pretty straight forward. Make sure to save the file once done editing.
+The user information is universal, so wherever there is userinformation like in your about page and project pages, it'll appear there.
+And that's it really. Pretty straight forward, right? Make sure to save the file once done editing.
 
 ## Your Summary
 Your summary appears in your About page. It's just a summary of who you are and to change this simply open `summary.txt` that, like all configuration files, exists in the Config folder. `Config/summary.txt`. Just replace the Lorum Ipsum template text with your own and save. 
@@ -64,7 +69,7 @@ Make sure to save the file once done editing.
 The order here defines the order of the thumbnails on the landing page. So, order how you want.
 
 # Adding New Project/Artwork
-I've included two example projects. The contents are identical, the only difference is their project name. When you add a new project folder, updated `Config/project.txt` with the project folders name for it to show. Let's have a rundown on the projects contents and how to add new artwork.
+I've included two example projects. The contents are identical, the only difference is their project name. When you add a new project folder, updated `Config/project.txt` with the project folders name for it to show. All you have to do is copy and paste an existing project and change all the stuff inside so it's relevant. Let's have a rundown on the projects contents and how to add new artwork.
 
 ![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/f166c183-bec4-449b-9643-f52e7a7ec72f)
 
@@ -90,6 +95,9 @@ Yes Sketchfab is supported! And it's even simpler than other portfolio websites.
 
 Again, it's pretty straightforward. The one thing i'd recommend to check over, is that you've properly referenced the projects html. It just tells the code to inject all this information into the html. Otherwise it won't show anything. I tend to make the project folder, copy the new name and paste it straight into the description.txt. 
 
+### Software Used
+Just update the software separated by commas in the appropriate place within the description.txt and it'll populate the list in the html. Easy.
+
 ## Adding Statistics
 Statistics is somewhat 3d orientated. It does need expanding upon and so i would love to hear what to include if you have input! The following stat list are as follows:
 - Triangles:
@@ -103,6 +111,6 @@ You don't have to have all of these, if any are left empty, they wont be include
 
 ![24-06-24_msedge_TGcUJcLVx3](https://github.com/artofpilgrim/portfolio-template/assets/172502597/a58f055b-b8c4-4993-8ee5-93eb79dfad92)
 
-
+You'll get a neat (i) icon next to it that acts as a custom tooltip. 
 
 

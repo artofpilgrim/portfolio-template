@@ -2,7 +2,7 @@
 
 
 # Defining User Information
-One of the first things you're going to want to do is tell the world who you are, where you work, your country and what you look like. It's pretty darn simple to do. Just open 'userinformation.txt' in the Config folder 
+One of the first things you're going to want to do is tell the world who you are, where you work, your country and what you look like. It's pretty darn simple to do. Just open 'userinformation.txt' in the Config folder which can be found here
 
 # Your Summary
 

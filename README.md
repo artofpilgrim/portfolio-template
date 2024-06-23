@@ -51,6 +51,9 @@ The user information is universal, so wherever there is userinformation like in 
 And that's it really. Pretty straight forward, right? Make sure to save the file once done editing.
 
 ## Your Summary
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/c8d52b13-2dba-406b-9177-f30017d144d2)
+
 Your summary appears in your About page. It's just a summary of who you are and to change this simply open `summary.txt` that, like all configuration files, exists in the Config folder. `Config/summary.txt`. Just replace the Lorum Ipsum template text with your own and save. 
 
 ## Software
@@ -60,12 +63,18 @@ Your summary appears in your About page. It's just a summary of who you are and 
 `Config/skills.txt` like software holds all the skills you possess. I've included a bunch already as an example. They're separated by lines just so it's clear and simple to update. Make sure to save the file once done editing. 
 
 ## Recommendations
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/34a6bb1c-ef07-409e-bf36-6d6830d37077)
+
 `Config/recommendations.txt` holds any and all recommendations you've received from your peers. It's somewhat familiar to your userinformation but has some extra structure/markdown to remember. 
 ![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/cc505574-1dca-445f-8426-6b3824dc6e13)
 
 As you can see we have `---` acting as a separator from the other recommendations. It simply allows you to create multiple recommendations in one file, the `---` tells the code that there's a new recommendation below and should be considered a new one, if there's anything below it. Make sure to save the file once done editing.
 
 ## Productions
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/51421dae-0160-4cb7-b9f0-549bee433b90)
+
 `Config/productions.txt` will hold all of the productions that you have worked on and want to display. Like with recommendations, each production should be separated with 3 dashes `---`.
 ![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/dc20ad27-e02b-4675-95d5-10953d4ba381)
 

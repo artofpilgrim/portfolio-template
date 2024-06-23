@@ -14,6 +14,10 @@ Notepad? At the very minimum Notepad. But i would highly suggest for the smoothe
 Below you'll find explanations on how to properly customise your portfolio using the .txt files found in the `Config` folder. 
 
 ## User Information
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/60a6e524-7407-4ebf-a892-6dedee93599d)
+
+
 `Config/userinformation.txt` contains all your information. Who you are, where you work, your country and what you look like. It's pretty darn simple. Just open userinformation.txt and you will be greeted with the following: 
 
 ![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/b335cdf4-af55-4dad-977f-ee288919a113)

@@ -6,4 +6,4 @@ Software Tags - separated by commas (marmoset toolbag, unity, UE5, Blender, 3ds 
 ---
 thumbnail url (gets injected into your landing page) 
 ---
-name of project html ("xyz.html" for example - make sure you rename the template html)
+name of project html ("bigmegagun.html" for example - make sure you rename the template html)

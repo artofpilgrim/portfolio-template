@@ -7,6 +7,9 @@ What i suggest you do is the simplest. Setup your own [github account](https://g
 
 Whenever you make changes, and you're happy with them, just commit and push those changes to github. It's actually pretty satisfying!
 
+#Software Needed?
+Notepad? At the very minimum Notepad. But i would highly suggest for the smoothest workflow is to download [VSCode](https://code.visualstudio.com/download) and install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension so that you can preview the changes before committing them to github, as you may have to wait a couple of minutes before it finishes deploying new changes. They're both free but that's it. Nothing else. 
+
 # Configuration
 Below you'll find explanations on how to properly customise your portfolio using the .txt files found in the `Config` folder. 
 

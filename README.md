@@ -99,6 +99,12 @@ Yes Sketchfab is supported! And it's even simpler than other portfolio websites.
 
 Again, it's pretty straightforward. The one thing i'd recommend to check over, is that you've properly referenced the projects html. It just tells the code to inject all this information into the html. Otherwise it won't show anything. I tend to make the project folder, copy the new name and paste it straight into the description.txt. 
 
+A nice little thing with the thumbnails too is that it recognises the type of media within the project.
+
+![24-06-24_msedge_PD4MJSx64Q](https://github.com/artofpilgrim/portfolio-template/assets/172502597/72d2521d-f53b-4c34-890d-795ddcbe9739)
+
+So if you have multiple images, mp4, youtube and sketchfab files in your project then you'll get some nice little icons in the top left to show the people viewing your portfolio what's inside. 
+
 ### Software Used
 Just update the software separated by commas in the appropriate place within the description.txt and it'll populate the list in the html. Easy.
 

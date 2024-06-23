@@ -61,13 +61,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const mediaContainer = document.getElementById('project-media');
             const lines = text.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));
 
-            for (let i = 0; i < lines.length; i++) {
+            let i = 0;
+            while (i < lines.length) {
                 let description = '';
                 let urls = [lines[i]];
 
-                if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm|mview)$/)) {
+                // Check if the next line is a description
+                if (i + 1 < lines.length && !lines[i + 1].match(/\.(jpeg|jpg|gif|png|mp4|webm|mview)$/) && !lines[i + 1].includes('youtube.com') && !lines[i + 1].includes('sketchfab.com') && !lines[i + 1].includes(' // ')) {
                     description = lines[i + 1];
-                    i++;
+                    i += 1;
+                }
+
+                // Check if the line contains a pair of images
+                if (lines[i].includes(' // ')) {
+                    urls = lines[i].split(' // ').map(url => url.trim());
                 }
 
                 if (description.includes('(marmoset viewer)')) {
@@ -76,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const mediaElement = createMediaElement(urls, description);
                 if (mediaElement) mediaContainer.appendChild(mediaElement);
+                i += 1;
             }
         } catch (error) {
             console.error('Error loading project media:', error);
@@ -86,18 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const mediaElement = document.createElement('div');
         mediaElement.className = 'media-item marmoset-item';
 
-        const script = document.createElement('script');
-        script.src = 'https://viewer.marmoset.co/main/marmoset.js';
-        document.head.appendChild(script);
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.allow = 'autoplay; fullscreen';
+        iframe.setAttribute('allowfullscreen', ''); // Ensure allowfullscreen is set correctly
 
-        script.onload = () => {
-            const iframe = document.createElement('iframe');
-            iframe.src = url;
-            iframe.allow = 'autoplay; fullscreen';
-            iframe.setAttribute('allowfullscreen', ''); // Ensure allowfullscreen is set correctly
-            mediaElement.appendChild(iframe);
-        };
-
+        mediaElement.appendChild(iframe);
         return mediaElement;
     };
 

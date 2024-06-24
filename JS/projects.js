@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keyboard navigation
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
-            window.location.href = 'index.html';
+            window.location.href = '../../index.html';
         } else if (event.key === 'ArrowLeft') {
             navigateProjects(-1);
         } else if (event.key === 'ArrowRight') {

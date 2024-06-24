@@ -177,6 +177,27 @@ hr {
   opacity: .05;
 }
 
+.link-button {
+  display: inline-block;
+    color: rgb(20, 20, 20);
+    background-color: #4d779f;
+    padding: 0 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    transition: color 0.3s;
+    opacity: 0.5;
+}
+
+.link-button:hover {
+  opacity: 1;
+  color: #f5ba13;
+  background-color: #272727;
+}
+
+
 /* Responsive Iframe */
 .responsive-iframe-container {
   position: relative;

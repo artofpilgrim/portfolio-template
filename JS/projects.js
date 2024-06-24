@@ -18,16 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const [title, description, tags] = text.split('---').map(line => line.trim());
             document.getElementById('project-title').textContent = title;
             document.title = title; // Set the document title as well
-
+    
             const descriptionContainer = document.getElementById('project-description');
+            const formattedDescription = convertUrlsToLinks(description);
+    
             if (description.length > 420) {
-                const shortDescription = description.substring(0, 420);
-                descriptionContainer.innerHTML = `${shortDescription}<span id="ellipsis">...</span><span id="full-description" style="display: none;">${description.substring(420)}</span><br><span id="toggle-description">Read More</span>`;
-
+                const shortDescription = formattedDescription.substring(0, 420);
+                descriptionContainer.innerHTML = `${shortDescription}<span id="ellipsis">...</span><span id="full-description" style="display: none;">${formattedDescription.substring(420)}</span><br><span id="toggle-description">Read More</span>`;
+    
                 const toggleDescription = document.getElementById('toggle-description');
                 const fullDescription = document.getElementById('full-description');
                 const ellipsis = document.getElementById('ellipsis');
-
+    
                 toggleDescription.addEventListener('click', () => {
                     const isFullVisible = fullDescription.style.display === 'inline';
                     fullDescription.style.display = isFullVisible ? 'none' : 'inline';
@@ -35,14 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     toggleDescription.textContent = isFullVisible ? 'Read More' : 'Read Less';
                 });
             } else {
-                descriptionContainer.textContent = description;
+                descriptionContainer.innerHTML = formattedDescription;
             }
-
+    
             renderTags(tags);
         } catch (error) {
             console.error('Error loading project description:', error);
         }
     };
+
+    const convertUrlsToLinks = (text) => {
+        const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
+        return text.replace(urlPattern, (url) => {
+            const truncatedUrl = new URL(url).hostname;
+            return `<a href="${url}" target="_blank" class="link-button">${truncatedUrl}</a>`;
+        });
+    };
+    
 
     const renderTags = (tags) => {
         const tagsContainer = document.getElementById('project-tags');

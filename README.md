@@ -133,6 +133,7 @@ Statistics is somewhat 3d orientated. It does need expanding upon and so i would
 - Workflow:
 - Target Engine:
 - Collaborators:
+
 You don't have to have all of these, if any are left empty, they wont be included. Try and keep this short and sweet. This allows a quick glance at some useful stats on your artwork. If you do want to expand on any info just encapsulate that info in brackets `()`.
 
 ![24-06-24_msedge_TGcUJcLVx3](https://github.com/artofpilgrim/portfolio-template/assets/172502597/a58f055b-b8c4-4993-8ee5-93eb79dfad92)

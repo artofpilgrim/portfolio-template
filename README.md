@@ -5,19 +5,51 @@ Hey everyone! I wanted to make a super simple html/css/javascript portfolio webs
 
 The template is designed to work via [Github Pages](https://pages.github.com/) or [Firebase](https://firebase.google.com/). It's entirely free. The only thing you should pay for is your domain name, which should be super cheap. As an example, I've set my own one up using the same process as below on Github Pages. https://artofpilgrim.github.io/ 
 
-What i suggest you do is the simplest. Setup your own [github account](https://github.com/join) and download [github desktop](https://desktop.github.com/), if you haven't already and follow the Github Page Desktop instructions i've linked above. Download the files from either the green code button (look for Download Zip) or [download it directly here](https://github.com/artofpilgrim/portfolio-template/archive/refs/heads/main.zip). Move everything (you can delete the readme.md from yours) into your portfolio folder you made when you made your own repo and commit your changes via Github Desktop and push them to main. 
+## Brief Workflow
+
+Afer getting setup (below) this is the workflow. 
+1. Copy and paste a Project Template Folder.
+2. Rename new Project Folder.
+3. Rename HTML.
+4. Update `description.txt`. Include html name and thumbnail.
+5. Add images/videos to `media.txt`.
+6. Add stats to `stats.txt`.
+7. Go into `Config/projects.txt` and add the name of the project folder to the list.
+8. Commit and push origin via Github Desktop.
+
+Look here's even a video showing the process on adding new artwork.
+
+https://github.com/artofpilgrim/portfolio-template/assets/172502597/5a1b7646-3757-4dce-8149-396614915a33
+
+
+# Getting Setup
+
+To setup your own portfolio using the template, first make sure to download the template files from either the green code button above (look for Download Zip) or [download it directly here](https://github.com/artofpilgrim/portfolio-template/archive/refs/heads/main.zip). Then set up your own [github account](https://github.com/join) and download [github desktop](https://desktop.github.com/), if you haven't already, and follow the [Github Pages](https://pages.github.com/) instructions for Github Desktop. Once you have followed those instructions, move the contents of the template (you can delete the readme.md from yours) into your newly created github repo desktop folder you just made. Whenever you make a change to these files or add anything, Github Desktop will notice it and you can commit these changes to your website. Commit and then push. See below on how to struture your folders.
+
+![24-06-24_GitHubDesktop_vWE9HfMPXs](https://github.com/artofpilgrim/portfolio-template/assets/172502597/f8c8b2fa-b613-48ee-ba0c-89fcde1f7f9d)
 
 Whenever you make changes, and you're happy with them, just commit and push those changes to github. It's actually pretty satisfying!
 
-#Software Needed?
+## Structure
+It's important to keep the structure consistent to the template.
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/03ab554a-8760-4d78-b432-da5ea7540c43)
+
+the index and about htmls should be in the root folder for the styling to be applied properly. So if you've made a folder structure like this:
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/6e6a1464-b6bd-4914-bcf6-95e2d8a78379)
+
+Then it's not going to be referenced properly, unless you change it yourself. 
+
+## Software Needed?
 Notepad? At the very minimum Notepad. But i would highly suggest for the smoothest workflow is to download [VSCode](https://code.visualstudio.com/download) and install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension so that you can preview the changes before committing them to github, as you may have to wait a couple of minutes before it finishes deploying new changes. They're both free but that's it. Nothing else. 
 
-# Configuration
-Below you'll find explanations on how to properly customise your portfolio using the .txt files found in the `Config` folder. 
+# From Template to Portfolio
+Below you'll find explanations on how to properly customise the template and make your portfolio your own using the .txt files found in the `Config` folder. 
 
 ## User Information
 
-![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/60a6e524-7407-4ebf-a892-6dedee93599d)
+![uip](https://github.com/artofpilgrim/portfolio-template/assets/172502597/7c0f0671-9a48-468a-81e8-086a239c0165)
 
 
 `Config/userinformation.txt` contains all your information. Who you are, where you work, your country and what you look like. It's pretty darn simple. Just open userinformation.txt and you will be greeted with the following: 
@@ -25,29 +57,9 @@ Below you'll find explanations on how to properly customise your portfolio using
 ![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/b335cdf4-af55-4dad-977f-ee288919a113)
 
 Replace the template text with your information. The order of the first 4 (avatar/name/role@company/location) need to remain the same for it to make sense and styling. The social links below can be in whatever order you wish. I'd recommend sticking to 6 max for styling purposes but you can have more if you please but it might look odd. There is support for 23 socials in total, which are as follows:
-- x/twitter
-- facebook
-- discord
-- instagram
-- youtube
-- linkedin
-- artstation
-- github
-- wordpress
-- vimeo
-- behance
-- playstation
-- xbox
-- vk
-- steam
-- tumblr
-- threads
-- patreon
-- twitch
-- mixer
-- mastodon
-- mailchimp
-- email
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/80cbab4c-887e-4d56-891d-8909954f6b7a)
+
 
 The user information is universal, so wherever there is userinformation like in your about page and project pages, it'll appear there.
 And that's it really. Pretty straight forward, right? Make sure to save the file once done editing.
@@ -66,7 +78,7 @@ Your summary appears in your About page. It's just a summary of who you are and 
 
 ## Recommendations
 
-![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/34a6bb1c-ef07-409e-bf36-6d6830d37077)
+![rec](https://github.com/artofpilgrim/portfolio-template/assets/172502597/862f7c35-0fce-4b57-aad3-f8267ac90e5e)
 
 `Config/recommendations.txt` holds any and all recommendations you've received from your peers. It's somewhat familiar to your userinformation but has some extra structure/markdown to remember. 
 ![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/cc505574-1dca-445f-8426-6b3824dc6e13)
@@ -103,7 +115,7 @@ For this, you'll need to edit the html. And just above the `</head>` you'll see 
 
 ## Adding Media
 ### Images & Videos
-`media.txt` will hold all your media for your project. And adding media to your project is incredibly easy because it's URL based. So, i suggest finding some image hosting website like postimages.org or dropbox and get the direct links and just paste them in - imgur doesn't work, sadly. Currently there's support for png/jpeg/jpg/gif/MP4 and i think webm but i haven't tested it. 
+`media.txt` will hold all your media for your project. Adding media to your project is incredibly easy because it's URL and/or local file storage based. Meaning you can link urls or just add the image file name - just make sure the image file exists within the project folder. So, if you're just using urls, i suggest finding some image hosting website like postimages.org or dropbox and get the direct links and just paste them in - imgur doesn't work, sadly. Currently there's support for png/jpeg/jpg/gif/MP4/webm.
 
 ### Before & After Sliders
 You can create before and after sliders by adding two image urls to one line separated by ` // `. For example, `https://beforepic.png // https://afterpic.png`. It's that easy. Make sure that the images share the same dimensions otherwise it's gonna look pretty whack. 
@@ -141,6 +153,11 @@ You don't have to have all of these, if any are left empty, they wont be include
 ![24-06-24_msedge_TGcUJcLVx3](https://github.com/artofpilgrim/portfolio-template/assets/172502597/a58f055b-b8c4-4993-8ee5-93eb79dfad92)
 
 You'll get a neat (i) icon next to it that acts as a custom tooltip. 
+
+# Mobile Support? 
+Yes, it just uses media queries - css code that changes the way webpages are displayed on smaller devices and works pretty great so far. 
+
+https://github.com/artofpilgrim/portfolio-template/assets/172502597/026df619-81b7-463f-b594-736c7a49a23e
 
 # Big Thanks! 
 Thanks for using this, if it's been helpful stop on by [X/Twitter](https://x.com/ArtOfPilgrim) where i'm fairly active and drop me a message or on my discord [Pilgrims' Lounge](https://discord.com/invite/WCnQ5bQa6Q) and join over 1500 others! 

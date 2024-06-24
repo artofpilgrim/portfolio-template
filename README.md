@@ -1,3 +1,5 @@
+https://github.com/artofpilgrim/portfolio-template/assets/172502597/18695e55-b8c7-4bcd-9e52-bec77a09308c
+
 # Brief Intro
 Hey everyone! I wanted to make a super simple html/css/javascript portfolio website template that allowed the user more control over what is presented on their portfolio and for free, and so here we are. I've simplified the customisation so that you don't really ever have to touch any code at all (unless you want to!?). There are only two folders you'll need to touch which are `Config` and `Projects`. Config contains all your information in the form of various .txt files which are all explained below, and Projects contain all your project folders! It's incredibly simple and takes about 2-4 minutes to set up a new project.
 

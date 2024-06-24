@@ -58,8 +58,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         const recommendationsElements = document.querySelectorAll(".recommendation");
         const dots = document.querySelectorAll(".dot");
         let currentIndex = 0;
+        let isTransitioning = false;
 
         function showRecommendation(index, direction) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
             const current = recommendationsElements[currentIndex];
             const next = recommendationsElements[index];
 
@@ -76,6 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 next.classList.add('active');
                 next.classList.remove('recommendation-enter-left', 'recommendation-enter-right');
                 currentIndex = index;
+                isTransitioning = false;
             }, 500); // Match the CSS transition duration
 
             dots.forEach((dot, i) => {
@@ -83,13 +88,24 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         }
 
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+
+        const debouncedShowRecommendation = debounce((index, direction) => showRecommendation(index, direction), 500);
+
         dotsContainer.addEventListener("click", (event) => {
             if (event.target.classList.contains('dot')) {
                 const index = parseInt(event.target.dataset.index, 10);
                 if (index > currentIndex) {
-                    showRecommendation(index, 'left');
+                    debouncedShowRecommendation(index, 'left');
                 } else if (index < currentIndex) {
-                    showRecommendation(index, 'right');
+                    debouncedShowRecommendation(index, 'right');
                 }
             }
         });
@@ -113,12 +129,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (diffX > 0) {
                     // Swiped left
                     newIndex = (currentIndex + 1) % recommendations.length;
-                    showRecommendation(newIndex, 'left');
                 } else {
                     // Swiped right
                     newIndex = (currentIndex - 1 + recommendations.length) % recommendations.length;
-                    showRecommendation(newIndex, 'right');
                 }
+                showRecommendation(newIndex);
                 isSwiping = false;
             }
         });

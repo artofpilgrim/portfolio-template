@@ -6,7 +6,6 @@
     width: 100%;
     min-height: 350px;
     overflow: hidden;
-    padding-bottom: 40px; /* Add space for the dots */
 }
 
 .recommendation {
@@ -16,7 +15,7 @@
     justify-content: center;
     align-items: flex-start;
     text-align: left;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     position: absolute;
     top: 0;
     left: 0;
@@ -26,6 +25,7 @@
     display: flex;
     opacity: 1;
     visibility: visible;
+    position: relative;
 }
 
 .recommendation-header {
@@ -54,7 +54,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -89,12 +89,9 @@
 }
 
 .recommendation-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    gap: 5px;
+    gap: 10px;
+    padding: 10px;
 }
 
 .dot {
@@ -218,17 +215,6 @@
 
     .recommendations-panel {
         padding: 8px; /* Adjust padding for mobile */
-        margin-bottom: 15px; /* Adjust margin for better spacing on mobile */
-    }
-
-    .recommendation-dots {
-        display: flex;
-        justify-content: center; /* Center the dots */
-        position: absolute; /* Make dots positioned absolutely */
-        bottom: 10px; /* Place dots at the bottom */
-        left: 50%;
-        transform: translateX(-50%);
-        gap: 7px; /* Adjust gap for better spacing on mobile */
     }
 
     .dot {

@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const mediaContainer = document.getElementById('project-media');
             const lines = text.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));
 
+            const basePath = window.location.pathname.split('/').slice(0, -1).join('/') + '/';
             const fragment = document.createDocumentFragment();
 
             let i = 0;
@@ -78,6 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lines[i].includes(' // ')) {
                     urls = lines[i].split(' // ').map(url => url.trim());
                 }
+
+                // Adjust URLs for relative paths
+                urls = urls.map(url => (url.startsWith('http') ? url : basePath + url));
 
                 if (description.includes('(marmoset viewer)')) {
                     urls = [`${urls[0]}.mview`];

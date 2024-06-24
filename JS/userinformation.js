@@ -73,6 +73,8 @@ function addUserInformation() {
                 'x.com': "fa-brands fa-x-twitter",
                 'facebook.com': "fa-brands fa-square-facebook",
                 'discord.com': "fa-brands fa-discord",
+                'discord.gg': "fa-brands fa-discord",
+                'dsc.gg': "fa-brands fa-discord",
                 'instagram.com': "fa-brands fa-instagram",
                 'youtube.com': "fa-brands fa-youtube",
                 'linkedin.com': "fab fa-linkedin",

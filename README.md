@@ -5,15 +5,29 @@ Hey everyone! I wanted to make a super simple html/css/javascript portfolio webs
 
 The template is designed to work via [Github Pages](https://pages.github.com/) or [Firebase](https://firebase.google.com/). It's entirely free. The only thing you should pay for is your domain name, which should be super cheap. As an example, I've set my own one up using the same process as below on Github Pages. https://artofpilgrim.github.io/ 
 
-What i suggest you do is the simplest. Setup your own [github account](https://github.com/join) and download [github desktop](https://desktop.github.com/), if you haven't already and follow the Github Page Desktop instructions i've linked above. Download the files from either the green code button (look for Download Zip) or [download it directly here](https://github.com/artofpilgrim/portfolio-template/archive/refs/heads/main.zip). Move everything (you can delete the readme.md from yours) into your portfolio folder you made when you made your own repo and commit your changes via Github Desktop and push them to main. 
+# Getting Setup
+
+To setup your own portfolio using the template, first make sure to download the template files from either the green code button above (look for Download Zip) or [download it directly here](https://github.com/artofpilgrim/portfolio-template/archive/refs/heads/main.zip). Then set up your own [github account](https://github.com/join) and download [github desktop](https://desktop.github.com/), if you haven't already, and follow the [Github Pages](https://pages.github.com/) instructions for Github Desktop. Once you have followed those instructions, move the contents of the template (you can delete the readme.md from yours) into your newly created github repo desktop folder you just made. Whenever you make a change to these files or add anything, Github Desktop will notice it and you can commit these changes to your website. Commit and then push. See below on how to struture your folders.
+
+![24-06-24_GitHubDesktop_vWE9HfMPXs](https://github.com/artofpilgrim/portfolio-template/assets/172502597/f8c8b2fa-b613-48ee-ba0c-89fcde1f7f9d)
 
 Whenever you make changes, and you're happy with them, just commit and push those changes to github. It's actually pretty satisfying!
 
-#Software Needed?
+## Structure
+It's important to keep the structure consistent to the template. 
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/03ab554a-8760-4d78-b432-da5ea7540c43)
+
+the index and about htmls should be in the root folder for the styling to be applied properly. So if you've made a folder structure like this:
+
+![image](https://github.com/artofpilgrim/portfolio-template/assets/172502597/6e6a1464-b6bd-4914-bcf6-95e2d8a78379)
+
+Then it's not going to be referenced properly, unless you change it yourself. 
+
+## Software Needed?
 Notepad? At the very minimum Notepad. But i would highly suggest for the smoothest workflow is to download [VSCode](https://code.visualstudio.com/download) and install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension so that you can preview the changes before committing them to github, as you may have to wait a couple of minutes before it finishes deploying new changes. They're both free but that's it. Nothing else. 
 
-# Configuration
-Below you'll find explanations on how to properly customise your portfolio using the .txt files found in the `Config` folder. 
+# From Template to Portfolio
+Below you'll find explanations on how to properly customise the template and make your portfolio your own using the .txt files found in the `Config` folder. 
 
 ## User Information
 
@@ -103,7 +117,7 @@ For this, you'll need to edit the html. And just above the `</head>` you'll see 
 
 ## Adding Media
 ### Images & Videos
-`media.txt` will hold all your media for your project. And adding media to your project is incredibly easy because it's URL based. So, i suggest finding some image hosting website like postimages.org or dropbox and get the direct links and just paste them in - imgur doesn't work, sadly. Currently there's support for png/jpeg/jpg/gif/MP4 and i think webm but i haven't tested it. 
+`media.txt` will hold all your media for your project. And adding media to your project is incredibly easy because it's URL and local file storage based. Meaning you can link urls or just add the image file name. So, if you're just using urls, i suggest finding some image hosting website like postimages.org or dropbox and get the direct links and just paste them in - imgur doesn't work, sadly. Currently there's support for png/jpeg/jpg/gif/MP4/webm.
 
 ### Before & After Sliders
 You can create before and after sliders by adding two image urls to one line separated by ` // `. For example, `https://beforepic.png // https://afterpic.png`. It's that easy. Make sure that the images share the same dimensions otherwise it's gonna look pretty whack. 

@@ -115,7 +115,7 @@ For this, you'll need to edit the html. And just above the `</head>` you'll see 
 
 ## Adding Media
 ### Images & Videos
-`media.txt` will hold all your media for your project. And adding media to your project is incredibly easy because it's URL and local file storage based. Meaning you can link urls or just add the image file name. So, if you're just using urls, i suggest finding some image hosting website like postimages.org or dropbox and get the direct links and just paste them in - imgur doesn't work, sadly. Currently there's support for png/jpeg/jpg/gif/MP4/webm.
+`media.txt` will hold all your media for your project. Adding media to your project is incredibly easy because it's URL and/or local file storage based. Meaning you can link urls or just add the image file name - just make sure the image file exists within the project folder. So, if you're just using urls, i suggest finding some image hosting website like postimages.org or dropbox and get the direct links and just paste them in - imgur doesn't work, sadly. Currently there's support for png/jpeg/jpg/gif/MP4/webm.
 
 ### Before & After Sliders
 You can create before and after sliders by adding two image urls to one line separated by ` // `. For example, `https://beforepic.png // https://afterpic.png`. It's that easy. Make sure that the images share the same dimensions otherwise it's gonna look pretty whack. 

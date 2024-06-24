@@ -154,6 +154,11 @@ You don't have to have all of these, if any are left empty, they wont be include
 
 You'll get a neat (i) icon next to it that acts as a custom tooltip. 
 
+# Mobile Support? 
+Yes, it just uses media queries - css code that changes the way webpages are displayed on smaller devices and works pretty great so far. 
+
+https://github.com/artofpilgrim/portfolio-template/assets/172502597/026df619-81b7-463f-b594-736c7a49a23e
+
 # Big Thanks! 
 Thanks for using this, if it's been helpful stop on by [X/Twitter](https://x.com/ArtOfPilgrim) where i'm fairly active and drop me a message or on my discord [Pilgrims' Lounge](https://discord.com/invite/WCnQ5bQa6Q) and join over 1500 others! 
 
